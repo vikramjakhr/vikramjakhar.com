@@ -1,9 +1,9 @@
 package models
 
 import (
-	"github.com/vikramjakhr/vikramjakhar.com/config"
+	"github.com/choudhary92/vikramjakhar.com/config"
 	"log"
-	"github.com/vikramjakhr/vikramjakhar.com/util"
+	"github.com/choudhary92/vikramjakhar.com/util"
 )
 
 type Email string

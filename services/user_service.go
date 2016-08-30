@@ -1,7 +1,7 @@
 package services
 
 import (
-	"github.com/vikramjakhr/vikramjakhar.com/util"
+	"github.com/choudhary92/vikramjakhar.com/util"
 )
 
 func (regData *util.RegistrationInfo) Register() {

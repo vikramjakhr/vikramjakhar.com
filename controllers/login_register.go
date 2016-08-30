@@ -3,8 +3,8 @@ package controllers
 import (
 	"net/http"
 	"strings"
-	"github.com/vikramjakhr/vikramjakhar.com/data"
-	"github.com/vikramjakhr/vikramjakhar.com/models"
+	"github.com/choudhary92/vikramjakhar.com/data"
+	"github.com/choudhary92/vikramjakhar.com/models"
 )
 
 func init() {

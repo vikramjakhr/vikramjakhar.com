@@ -4,10 +4,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/vikramjakhr/vikramjakhar.com/controllers"
+	"github.com/choudhary92/vikramjakhar.com/controllers"
 	"os"
 	"strconv"
-	"github.com/vikramjakhr/vikramjakhar.com/config"
+	"github.com/choudhary92/vikramjakhar.com/config"
 )
 
 const (

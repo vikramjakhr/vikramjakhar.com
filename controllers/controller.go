@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"html/template"
 	"strings"
-	"github.com/vikramjakhr/vikramjakhar.com/data"
+	"github.com/choudhary92/vikramjakhar.com/data"
 )
 
 func init() {
