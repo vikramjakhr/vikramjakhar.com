@@ -1,0 +1,10 @@
+{{define "reside-bar-search-tmpl"}}
+<div class='widget-container'>
+    <div id='search' title='Type and hit enter'>
+        <form action='#'>
+            <input id='s' name='q' onblur='if (this.value == "") {this.value = "Search";}'
+                   onfocus='if (this.value == "Search") {this.value = "";}' type='text' value='Search'/>
+        </form>
+    </div>
+</div>
+{{end}}

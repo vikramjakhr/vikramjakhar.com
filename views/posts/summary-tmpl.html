@@ -1,0 +1,111 @@
+{{define "summary-tmpl"}}
+<div id='content-wrapper1'>
+    <div style='clear:both;'></div>
+    <div id='crosscol-wrapper' style='text-align:center'>
+        <div class='crosscol no-items section' id='crosscol'></div>
+    </div>
+    <div id='main-wrapper'>
+        <div class='main section' id='main'>
+            <div class='widget Blog' data-version='1' id='Blog1'>
+
+                {{range $Summary := $}}
+
+                <div class='blog-posts hfeed'>
+
+                    <div class="date-outer">
+
+                        <div class="date-posts">
+                            <div class='post-outer'>
+                                <div class='wrapfullpost'>
+                                    <div class='post hentry'>
+                                        <h3 class='post-title entry-title' itemprop='headline'>
+                                            <a href='{{$Summary.URI}}'>{{$Summary.Title}}</a>
+                                        </h3>
+                                        <div class='post-header-line-1'></div>
+                                        <div class='postmeta-primary'>
+                                                    <span class='meta_author post-author vcard'>
+                                                        <span class='fn'>
+                                                          <a class='g-profile' href='{{$Summary.AuthorProfileURI}}'
+                                                             rel='author' title='author profile'>
+                                                              <span>{{$Summary.Author}}</span>
+                                                          </a>
+                                                        </span>
+                                                    </span>
+                                                    <span class='meta_date'>
+                                                        <a class='timestamp-link' href='#' rel='bookmark'
+                                                           title='permanent link'>
+                                                            <span class='published updated' itemprop='datePublished'
+                                                                  title='{{$Summary.DatePublished}}'>{{$Summary.DatePublished}}</span>
+                                                        </a>
+                                                    </span>
+                                            <span class='meta_categories'>
+                                                <a href='/golang' rel='tag'>{{$Summary.Tag}}</a>
+                                            </span>
+                                            <span class='meta_comments'>
+                                                <a class='comment-link' href='#' onclick=''>{{$Summary.CmntCount}} comments</a>
+                                            </span>
+                                            <span class='item-control blog-admin pid-533320333'>
+                                                <a href='#' title='Edit Post'>
+                                                    <img alt='' class='icon-action' height='18'
+                                                         src='/assets/images/icon18_edit_allbkg.gif' width='18'/>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <div class='post-body entry-content' id='post-body-1'>
+                                            <div id="{{$Summary.ID}}"><img
+                                                    src="/assets/{{$Summary.ImageURI}}"
+                                                    class="pbtthumbimg">
+                                                <div>
+                                                    {{$Summary.Summary}}
+                                                </div>
+                                            </div>
+                                            <script type='text/javascript'>createSummaryAndThumb("{{$Summary.ID}}");</script>
+                                            <div class='pbtsharethisbutt'>
+                                                Share:
+                                                <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/{{$Summary.URI}}
+                                                &amp;src=sdkpreparse&amp;title={{$Summary.Title}}&amp;image=http://vikramjakhar.com/assets/{{$Summary.ImageURI}}'
+                                                   onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
+                                                   rel='nofollow' target='_blank'
+                                                   title='Share this on Facebook'>
+                                                    <i class='fa fa-facebook'></i>
+                                                </a>
+                                                <a href='#' rel='nofollow' target='_blank' title='Tweet This!'>
+                                                    <i class='fa fa-twitter'></i>
+                                                </a>
+                                                <a href='#'
+                                                   onclick='javascript:window.open(this.href,   "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600");return false;'
+                                                   rel='nofollow' target='_blank'
+                                                   title='Share this on Google+'>
+                                                    <i class='fa fa-google-plus'></i>
+                                                </a>
+                                                <a class='social-iconnbt' href='#' rel='nofollow' target='_blank'
+                                                   title='Share on Pinterest'>
+                                                    <i class='fa fa-pinterest'></i>
+                                                </a>
+                                            </div>
+                                            <div class='readmore'>
+                                                <a href='{{$Summary.URI}}'>Read More</a>
+                                            </div>
+                                            <div style='clear: both;'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+
+                <div class='blog-pager' id='blog-pager'>
+                    <span id='blog-pager-older-link'>
+                        <a class='blog-pager-older-link' href='#' id='Blog1_blog-pager-older-link' title='Older Posts'>Older Posts&nbsp;&rarr;</a>
+                    </span>
+                    <a class='home-link' href='/home'>Home</a>
+                </div>
+                <div class='clear'></div>
+                <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

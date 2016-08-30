@@ -1,0 +1,264 @@
+{{define "introduction-to-go"}}
+<div id='main-wrapper'>
+    <div class='main section' id='main'>
+        <div class='widget Blog' data-version='1' id='Blog1'>
+            <div class='blog-posts hfeed'>
+
+                <div class="date-outer">
+                    <h2 class='date-header'><span>Monday, July 25, 2016</span></h2>
+
+                    <div class="date-posts">
+                        <div class='post-outer'>
+                            <div class='wrapfullpost'>
+                                <div class='post hentry'>
+                                    <h3 class='post-title entry-title' itemprop='headline'>
+                                        <a href='{{.URI}}'>{{.Title}}</a>
+                                    </h3>
+                                    <div class='post-header-line-1'></div>
+                                    <div class='postmeta-primary'>
+                                                    <span class='meta_author post-author vcard'>
+                                                        <span class='fn' itemprop='author' itemscope='itemscope'>
+                                                            <a class='g-profile' href='{{.AuthorProfileURI}}'
+                                                               rel='author'
+                                                               title='author profile'>
+                                                                <span itemprop='name'>{{.Author}}</span></a></span></span>
+                                                    <span class='meta_date'>
+                                                        <a class='timestamp-link' href='#' rel='bookmark'
+                                                           title='permanent link'>
+                                                            <span class='published updated' itemprop='datePublished'
+                                                                  title='2016-07-25T07:40:00-07:00'>{{.DatePublished}}</span></a></span>
+                                                    <span class='meta_comments'>
+                                                        <a class='comment-link' href='#comment-form' onclick=''>{{.CmntCount}} comments</a>
+                                                    </span>
+                                                    <span class='item-control blog-admin pid-533320333'>
+                                                        <a href='#' title='Edit Post'>
+                                                            <img alt='' class='icon-action' height='18'
+                                                                 src='/assets/images/icon18_edit_allbkg.gif'
+                                                                 width='18'/>
+                                                        </a>
+                                                    </span>
+                                    </div>
+                                    <div class='post-body entry-content' id='post-body-2219512222971299624'>
+                                        <p style="text-align: center;"><a
+                                                href="#"
+                                                rel="nofollow"><img
+                                                src="/assets/{{.ImageURI}}"
+                                                style="max-width:100%; high: auto;"
+                                                alt="sfsdf"/></a>
+                                            <br/>
+                                            <!--<small>Aquarium. Photo by Francisco.</small>-->
+                                        </p>
+                                        <p>
+                                            As in modern era of rapid development, developers have to make an
+                                            uncomfortable choice
+                                            between rapid development and high performance while choosing a language
+                                            for their projects.
+                                            Languages like C and C++ offer fast execution, whereas languages like
+                                            Python and Ruby offers rapid development.
+                                            But the Go team went beyond to solve this problem of developers
+                                            and offers a <b>high-performance language with features that make
+                                            development fast.</b>
+
+                                        </p>
+                                        <p>
+                                            <b>Go</b> (also known as <b>golang</b>) is an open source programming
+                                            language <b>created at Google</b>
+                                            by Robert Griesemer, Rob Pike, and Ken Thompson in 2009.
+                                            It is a compiled, statically typed and many other strongest features
+                                            like
+                                            garbage collection, concurrency and scalable.
+                                        </p>
+                                        <p>
+                                            Go is known not only by what it includes, but also by what it doesn’t
+                                            include.
+                                            Go has a very <b>concise syntax</b>, and a <b>compiler that’s very
+                                            fast</b>,
+                                            even sometimes you’ll forget it’s running. You'll wait very less
+                                            time for your project to build. </p>
+                                        <p>By using Go’s <b>built-in
+                                            concurrency</b> features,
+                                            you can scale your software to use the resources available without using
+                                            any
+                                            special threading libraries. </p>
+                                        <p>Go has a simple and effective <b>type
+                                            system</b> that takes much of
+                                            the overhead out of object-oriented development and lets you focus on
+                                            <b>code reuse.</b>
+                                        </p>
+                                        <p>Go also has a <b>garbage collector</b>, so you don’t have
+                                            to worry much
+                                            about memory. Let’s
+                                            look quickly at some of these key features.
+                                        </p>
+                                        <p><strong style="color: darkred">&raquo; Rapid
+                                            development</strong></p>
+                                        <p>
+                                            Go compiles by using a
+                                            <b>smart compiler</b> and a very <b>simplified dependency resolution
+                                            algorithm.</b>
+                                            While building a Go program, the go compiler only needs to look at the
+                                            libraries that you
+                                            include directly, rather than traversing the dependencies of all the
+                                            libraries which are included in the
+                                            entire dependency chain like C, C++ and Java.
+                                            Even many Go applications <b>compiles in few seconds</b> in modern
+                                            hardware.
+                                        </p>
+                                        <p><strong style="color: darkred">&raquo; Goroutines</strong>
+                                        </p>
+                                        <p>
+                                            Go’s concurrency support is one of its strongest features.
+                                            A a programmer one of the most difficult thing is to write an
+                                            application that
+                                            effectively uses the available resources of the hardware currently
+                                            running it.
+                                        </p>
+                                        <p>Modern computers have many cores, but most programming
+                                            languages don’t
+                                            have any effective tools that
+                                            utilizes these resources effectively. It often requires lot of thread
+                                            synchronization
+                                            code, which is prone to errors.
+                                        </p>
+                                        <p>But <b>Go's goroutines are functions that can run
+                                            concurrently with
+                                            other
+                                            goroutines, even including the
+                                            entry point of your program. In Go you can execute many goroutines
+                                            in a
+                                            single thread.
+                                            If you want to execute some code concurrently while you are doing
+                                            other things, a goroutine is perfect choice for the job.</b> Here’s
+                                            a
+                                            quick
+                                            example:
+                                        </p>
+                                            <pre class="prettyprint">func greetSomeone(name string) {
+    fmt.Println("Hi ", name)
+}</pre>
+                                        <p>
+                                            And elsewhere in your code where you want to greet someone, just type
+                                        </p>
+                                        <pre class="prettyprint">go greetSomeone("Vikram")</pre>
+                                        <p><strong style="color: darkred">&raquo; Go's
+                                            Channels</strong></p>
+                                        <p>
+                                            Go’s <b>channels are like data structures that allows safe data
+                                            communications
+                                            between goroutines.</b> Channels <b>helps to avoid shared memory access
+                                            problem</b> that we faces
+                                            in many programming languages.
+                                        </p>
+                                        <p><strong style="color: darkred">&raquo; Go's type
+                                            system</strong></p>
+                                        <p>
+                                            Go has a <b>flexible type system</b> that enables <b>code reuse with
+                                            minimal
+                                            refactoring overhead.</b> In go it <b>feels like object oriented
+                                            development but
+                                            without worrying about traditional approach</b> like abstract classes
+                                            and all that
+                                            we see in other programming languages.
+                                            Go uses <b>composition design pattern</b> to simply embed types to reuse
+                                            functionality.
+                                        </p>
+                                        <p>
+                                            Go has both <b>built-in types</b> and <b>user-defined types.</b> Built
+                                            in types like int and stringa, And a
+                                            typical <b>user-defined type in Go will look similar to structs in C</b>
+                                            and operates similarly.
+                                            But Go's types can also declare methods that operate on that data.
+                                        </p>
+                                        <p><strong style="color: darkred">&raquo; Memory
+                                            management</strong></p>
+                                        <p>
+                                            Go has a <b>modern garbage collector</b> that does the
+                                            hard work for you, so that you don't have to worry about memory related
+                                            things
+                                            that you needs to do in C and C++. Althogh Go's garbage collection adds
+                                            little
+                                            overhead to program execution time but simultaneously reduces the
+                                            development efforts.
+                                        </p><br/>
+                                        <p>
+                                            Apart from all, Go has also others feautes like <b>strong tooling
+                                            machanism</b> which reduces
+                                            development time.
+                                        </p>
+                                        <p>
+                                            To run a Go application, you have to <b>just build and run the
+                                            binary</b> and it's all done. Nothing
+                                            like jar, war and all kind of stuff.
+                                        </p>
+                                        <div class='pbtsharethisbutt'>
+                                            Share:
+                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/{{.URI}}
+                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/{{.ImageURI}}'
+                                               onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
+                                               rel='nofollow' target='_blank'
+                                               title='Share this on Facebook'>
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a href='#' rel='nofollow' target='_blank' title='Tweet This!'>
+                                                <i class='fa fa-twitter'></i>
+                                            </a>
+                                            <a href='#' onclick='javascript:void(0);return false;' rel='nofollow'
+                                               target='_blank' title='Share this on Google+'>
+                                                <i class='fa fa-google-plus'></i>
+                                            </a>
+                                            <a class='social-iconnbt' href='#' rel='nofollow'
+                                               target='_blank' title='Share on Pinterest'>
+                                                <i class='fa fa-pinterest'></i>
+                                            </a>
+                                        </div>
+                                        <div style='clear: both;'></div>
+                                    </div>
+                                    <div class='post-iconspbt'>
+<span class='post-icons' style='padding-right:10px;'>
+</span>
+                                        <div style='clear: both;'></div>
+                                    </div>
+                                    <div class='post-location post-locationpbt'>
+                                    </div>
+                                    <div class='related-postbwrap' id='bpostrelated-post'></div>
+                                    <div style='clear: both;'></div>
+                                    <div class='post-footer'>
+                                        <div class='post-footer-line post-footer-line-'></div>
+                                        <div class='post-footer-line post-footer-line-2'>
+                                        </div>
+                                        <div class='post-footer-line post-footer-line-3'></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='clear'></div>
+
+                            <div class='comments' id='comments'>
+                                <a name='comments'></a>
+                                <h4>0 comments:</h4>
+                                <div class='comments-content'>
+
+                                </div>
+
+
+                                <p class='comment-footer'>
+                                    <div class='comment-form'>
+                                        <a name='comment-form'></a>
+                                <p>
+
+                            </div>
+
+                            <div id='backlinks-container'>
+                                <div id='Blog1_backlinks-container'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
+    </div>
+</div>
+{{end}}

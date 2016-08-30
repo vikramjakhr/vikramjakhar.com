@@ -1,0 +1,66 @@
+{{define "login-signup-tmpl"}}
+<div id="signUpModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Welcome to vikramjakhar.com</h4>
+            </div>
+            <div class="modal-body">
+                <div class="left-column clearfix">
+                    <h2>Already a Member?</h2>
+                    <div>
+                        <form id="login" role="form" method="post" action="/login">
+                            <div class="form-group">
+                                <input type="text" name="username" class="form-control" placeholder="Email or Username">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+
+                            <div class="member_join_actions">
+                                <div class="forgot-pass">
+                                    <a href="#">Forgot Password?</a>
+                                </div>
+                                <div class="form-group signUpBtn">
+                                    <input type="submit" class="btn btn-success" value="SIGN IN">
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+
+                <div class="right-column">
+                    <h2>Join Here!</h2>
+                    <div class="join-form">
+                        <form method="post" action="/user/join" name="emailForm">
+                            <div class="form-group input-container">
+                                <input type="email" name="email" class="form-control"
+                                       placeholder="Email">
+                                <div class="icon"></div>
+                            </div>
+                            <div class="form-group joinBtn">
+                                <div class="button-right"><input type="submit" class="btn btn-success" value="JOIN">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="benefits">
+                            <h3>Joining is quick, easy and free!</h3>
+                            <ul>
+                                <li>Stay updated via various blog posts</li>
+                                <li>Post blog of yourself</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+{{end}}

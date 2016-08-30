@@ -1,0 +1,18 @@
+{{define "reside-bar-tmpl"}}
+
+<div id='rsidebar-wrapper'>
+    {{template "reside-bar-search-tmpl"}}
+    <div style='clear:both;'></div>
+    <div class='sidebarpbt section' id='rsidebartop'>
+        <!--..template "reside-bar-social-tmpl"..-->
+        {{template "reside-bar-latest-tmpl"}}
+    </div>
+    <div style='clear:both;'></div>
+    {{template "reside-bar-widget-tmpl"}}
+    <div style='height:5px;clear:both;'></div>
+    <div class='sidebarpbt no-items section' id='sidebarright'></div>
+</div>
+
+<div class='clear' style='height:2px;'>&#160;</div>
+
+{{end}}
