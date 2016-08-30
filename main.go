@@ -3,10 +3,10 @@ package main
 import (
 	"log"
 	"net/http"
-
-	"github.com/choudhary92/vikramjakhar.com/controllers"
 	"os"
 	"strconv"
+
+	"github.com/choudhary92/vikramjakhar.com/controllers"
 	"github.com/choudhary92/vikramjakhar.com/config"
 )
 
