@@ -45,7 +45,22 @@ jQuery(document).ready(function () {
             return false;
         });
     });
+    jQuery('.commentTxtArea').on('paste input', function () {
+        if ($(this).outerHeight() > this.scrollHeight){
+            $(this).height(40)
+        }
+        while ($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))){
+            $(this).height($(this).height() + 1)
+        }
+    });
 
+    jQuery('.commentTxtArea').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            alert('You pressed a "enter" key in textbox');
+        }
+
+    });
 });
 
 function isValidEmail(email) {
