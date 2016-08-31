@@ -2088,13 +2088,13 @@ embed, img, object, video {
     margin: 10px 0 0 227px !important;
     border: 1px solid #eeeeee;
     /*box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12), 0 1px 9px rgba(0, 0, 0, 0.24);*/
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .registration-wrapper:hover {
     /*box-shadow: 0 1px 10px rgba(0, 0, 0, 0.12), 0 1px 18px rgba(0, 0, 0, 0.24);*/
     border-top: 0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .registration-wrapper .section {
@@ -2316,13 +2316,44 @@ input.registration-email {
     margin: 19px 0 20px 15px;
 }
 
-.register-signup-btn:hover, .register-signup-btn:focus,.register-signup-btn:active {
+.register-signup-btn:hover, .register-signup-btn:focus, .register-signup-btn:active {
     border-radius: 0 !important;
     border-color: #FF8C00 !important;
     background-color: #FF8C00 !important;
 }
 
-.reg-validation-error{
+.reg-validation-error {
     color: red;
     font-size: 11px;
+}
+
+a#scroll-up {
+    background-color: #d92f6b;
+}
+
+a#scroll-up {
+    bottom: 20px;
+    position: fixed;
+    right: 20px;
+    display: none;
+    -webkit-font-smoothing: antialiased;
+    font: normal 26px/1 'Genericons';
+    vertical-align: top;
+    color: #FFFFFF;
+    background-color: #02BB9F;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    border-radius: 3px;
+    padding: 6px;
+    height: 25px;
+    width: 25px;
+}
+
+a#scroll-up:before {
+    content: '\f432';
+}
+
+a#scroll-up:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
