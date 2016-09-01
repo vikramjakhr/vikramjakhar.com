@@ -128,6 +128,6 @@ var Comment = React.createClass({
 });
 
 ReactDOM.render(
-    <CommentBox commentFetch="/api/comments/fetch" commentPost="/api/comments/post" pollInterval={5000}/>,
+    <CommentBox commentFetch="/api/comments/fetch" commentPost="/api/comments/post" pollInterval={2000}/>,
     document.getElementById("comments")
 );
