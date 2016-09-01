@@ -565,6 +565,7 @@ h2.date-header {
     margin-bottom: 15px;
     background: #F5F5F5;
     padding: 10px 15px;
+    overflow: auto;
 }
 
 #comments h4 {
@@ -2354,7 +2355,7 @@ a#scroll-up:hover {
 }
 
 .commentTxtArea{
-    width: 99%;
+    width: 98%;
     height: 40px;
     resize: none;
     overflow: auto;
@@ -2366,6 +2367,19 @@ a#scroll-up:hover {
     padding: 5px;
 }
 
-.comment-txtArea-div{
-    width: 99%;
+.user-thumbnail{
+    float: left;
+    margin-right: 4px;
+}
+
+.user-thumbnail img{
+    height: 52px;
+    width: 52px;
+}
+
+.comment-txtArea-div, .aComment{
+    width: 90%;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
