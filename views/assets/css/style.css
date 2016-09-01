@@ -2373,13 +2373,13 @@ a#scroll-up:hover {
 }
 
 .user-thumbnail img{
-    height: 52px;
-    width: 52px;
+    height: 32px;
+    width: 32px;
 }
 
 .comment-txtArea-div, .aComment{
-    width: 90%;
+    width: 93%;
     float: left;
-    margin-left: 5px;
-    margin-bottom: 5px;
+    margin-left: 7px;
+    margin-bottom: 7px;
 }
