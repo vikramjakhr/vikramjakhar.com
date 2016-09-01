@@ -54,13 +54,13 @@ jQuery(document).ready(function () {
         }
     });
 
-    jQuery('.commentTxtArea').keypress(function(event){
+    /*jQuery('.commentTxtArea').keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
             alert('You pressed a "enter" key in textbox');
         }
 
-    });
+    });*/
 });
 
 function isValidEmail(email) {

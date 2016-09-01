@@ -28,7 +28,7 @@
                                                             <span class='published updated' itemprop='datePublished'
                                                                   title='2016-07-25T07:40:00-07:00'>{{.DatePublished}}</span></a></span>
                                                     <span class='meta_comments'>
-                                                        <a class='comment-link' href='#comment-form' onclick=''>{{.CmntCount}} comments</a>
+                                                        <a id="commentCountLink" class='comment-link' href='#comments' onclick=''>{{.CmntCount}} comments</a>
                                                     </span>
                                                     <span class='item-control blog-admin pid-533320333'>
                                                         <a href='#' title='Edit Post'>
@@ -232,26 +232,11 @@
                             </div>
 
                             <div class='clear'></div>
+                            <input type="hidden" id="currentPage" value="{{.Name}}">
+                            <div id="comments"></div>
+                            <script src='/assets/js/comment.js' type='text/babel'></script>
+                            <div class="clear"></div>
 
-                            <div class='comments' id='comments'>
-                                <a name='comments'></a>
-                                <h4>0 comments:</h4>
-                                <div class='comments-content'>
-
-                                </div>
-
-
-                                <p class='comment-footer'>
-                                    <div class='comment-form'>
-                                        <a name='comment-form'></a>
-                                <p>
-
-                            </div>
-
-                            <div id='backlinks-container'>
-                                <div id='Blog1_backlinks-container'>
-                                </div>
-                            </div>
                         </div>
                     </div>
 

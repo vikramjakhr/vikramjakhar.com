@@ -35,6 +35,7 @@ func initTemplateInfo() {
 
 type SummaryData struct {
 	Title            string
+	Name            string
 	URI              string
 	Author           string
 	AuthorProfileURI string
@@ -59,6 +60,7 @@ func initSummaryData() {
 func introToGo() SummaryData {
 	return SummaryData{
 		Title:TemplateInfoMap["introduction-to-go"].Title,
+		Name:TemplateInfoMap["introduction-to-go"].Name,
 		URI:"/post/introduction-to-go",
 		Author:"Vikram",
 		AuthorProfileURI:"/about",
@@ -81,6 +83,7 @@ func introToGo() SummaryData {
 func arraysInGo() SummaryData {
 	return SummaryData{
 		Title:TemplateInfoMap["arrays-in-go"].Title,
+		Name:TemplateInfoMap["arrays-in-go"].Name,
 		URI:"/post/arrays-in-go",
 		Author:"Vikram",
 		AuthorProfileURI:"/about",
@@ -99,6 +102,7 @@ func arraysInGo() SummaryData {
 func workingWithSlicesInGo() SummaryData {
 	return SummaryData{
 		Title:TemplateInfoMap["working-with-slices-in-go"].Title,
+		Name:TemplateInfoMap["working-with-slices-in-go"].Name,
 		URI:"/post/working-with-slices-in-go",
 		Author:"Vikram",
 		AuthorProfileURI:"/about",

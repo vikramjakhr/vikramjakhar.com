@@ -6,9 +6,7 @@ import (
 	"os"
 	"io/ioutil"
 	"encoding/json"
-	"io"
-	"bytes"
-	"time"
+	"strings"
 )
 
 func init() {
@@ -22,23 +20,33 @@ type comment struct {
 	Text   string `json:"text"`
 }
 
-func postComment(w http.ResponseWriter, req *http.Request) {
+type commentResponse struct {
+	Comments     []comment `json:"comments"`
+	CommentCount int `json:"commentCount"`
+}
 
-	fileName := "data/comments/comments-introduction-to-go.json"
-	fi, err := os.Stat(fileName)
-	if err != nil {
-		http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
-		return
-	}
-
-	commentData, err := ioutil.ReadFile(fileName)
-	if err != nil {
-		http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
-		return
-	}
-
+func fetchComments(w http.ResponseWriter, req *http.Request) {
 	switch req.Method {
 	case "POST":
+		body, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			panic(err)
+		}
+		postName := strings.TrimSpace(string(body))
+
+		fileName := "data/comments/" + postName + ".json"
+		_, err = os.Stat(fileName)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
+			return
+		}
+
+		commentData, err := ioutil.ReadFile(fileName)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
+			return
+		}
+
 		var comments []comment
 
 		if err := json.Unmarshal(commentData, &comments); err != nil {
@@ -46,7 +54,57 @@ func postComment(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		comments = append(comments, comment{ID:time.Now().Unix() / 10000, Author:"guest", Text:"Hellooo : " + time.Now().String()})
+		commentRes := commentResponse{Comments:comments, CommentCount:len(comments)}
+		res, err := json.Marshal(commentRes)
+		if err != nil {
+			panic(err)
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Cache-Control", "no-cache")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Write(res)
+	default:
+		http.Error(w, fmt.Sprintf("Unsupported Method : %s", req.Method), http.StatusMethodNotAllowed)
+	}
+}
+
+type CommentReqData struct {
+	Author   string `json:"author"`
+	ID       int64 `json:"id"`
+	Text     string `json:"text"`
+	PostName string `json:"postName"`
+}
+
+func postComment(w http.ResponseWriter, req *http.Request) {
+	switch req.Method {
+	case "POST":
+		decoder := json.NewDecoder(req.Body)
+		var cmntData CommentReqData
+		err := decoder.Decode(&cmntData)
+		if err != nil {
+			panic(err)
+		}
+
+		fileName := "data/comments/" + strings.TrimSpace(cmntData.PostName) + ".json"
+		fi, err := os.Stat(fileName)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
+			return
+		}
+
+		commentData, err := ioutil.ReadFile(fileName)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
+			return
+		}
+		var comments []comment
+
+		if err := json.Unmarshal(commentData, &comments); err != nil {
+			http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
+			return
+		}
+
+		comments = append(comments, comment{ID:cmntData.ID, Author:cmntData.Author, Text:cmntData.Text})
 
 		commentData, err = json.MarshalIndent(comments, "", "    ")
 		if err != nil {
@@ -54,42 +112,22 @@ func postComment(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-
-		err := ioutil.WriteFile(fileName, commentData, fi.Mode())
+		err = ioutil.WriteFile(fileName, commentData, fi.Mode())
 		if err != nil {
 			http.Error(w, fmt.Sprintf("Unable to write comments"), http.StatusInternalServerError)
 			return
 		}
 
+		commentRes := commentResponse{Comments:comments, CommentCount:len(comments)}
+		res, err := json.Marshal(commentRes)
+		if err != nil {
+			panic(err)
+		}
+
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("Cache-Control", "no-cache")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		io.Copy(w, bytes.NewReader(commentData))
-	default:
-		http.Error(w, fmt.Sprintf("Unsupported Method : %s", req.Method), http.StatusMethodNotAllowed)
-	}
-}
-
-func fetchComments(w http.ResponseWriter, req *http.Request) {
-	fileName := "data/comments/comments-introduction-to-go.json"
-	_, err := os.Stat(fileName)
-	if err != nil {
-		http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
-		return
-	}
-
-	commentData, err := ioutil.ReadFile(fileName)
-	if err != nil {
-		http.Error(w, fmt.Sprintf("Unable to find comments data"), http.StatusInternalServerError)
-		return
-	}
-
-	switch req.Method {
-	case "GET":
-		w.Header().Set("Content-Type", "application/json")
-		w.Header().Set("Cache-Control", "no-cache")
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		io.Copy(w, bytes.NewReader(commentData))
+		w.Write(res)
 	default:
 		http.Error(w, fmt.Sprintf("Unsupported Method : %s", req.Method), http.StatusMethodNotAllowed)
 	}

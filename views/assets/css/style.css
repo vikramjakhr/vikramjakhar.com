@@ -2384,3 +2384,12 @@ a#scroll-up:hover {
     margin-bottom: 7px;
     min-height: 35px;
 }
+
+.aComment a{
+    font-weight: bold !important;
+    color: #365899;
+}
+
+.aComment a:hover{
+    color: darkred;
+}

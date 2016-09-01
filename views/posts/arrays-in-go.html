@@ -28,7 +28,7 @@
                                                             <span class='published updated' itemprop='datePublished'
                                                                   title='2016-07-25T07:40:00-07:00'>{{.DatePublished}}</span></a></span>
                                                     <span class='meta_comments'>
-                                                        <a class='comment-link' href='#comment-form' onclick=''>{{.CmntCount}} comments</a>
+                                                        <a id="commentCountLink" class='comment-link' href='#comments' onclick=''>{{.CmntCount}} comments</a>
                                                     </span>
                                                     <span class='item-control blog-admin pid-533320333'>
                                                         <a href='#' title='Edit Post'>
@@ -139,28 +139,11 @@ func main() {
                             </div>
 
                             <div class='clear'></div>
-
-                            <div class='comments' id='comments'>
-                                <h4>0 comments:</h4>
-                                <div class='commentList'>
-                                    <div>
-                                        <div class="user-thumbnail">
-                                            <img class="user-thumb" src="/assets/images/user.png">
-                                        </div>
-                                        <div class="aComment"></div>
-                                    </div>
-                                </div>
-                                <div id="commentForm">
-                                    <div class="user-thumbnail">
-                                        <img class="user-thumb" src="/assets/images/user.png">
-                                    </div>
-                                    <div class="comment-txtArea-div">
-                                        <textarea class="commentTxtArea" placeholder="Add your comment here"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <input type="hidden" id="currentPage" value="{{.Name}}">
+                            <div id="comments"></div>
+                            <script src='/assets/js/comment.js' type='text/babel'></script>
                             <div class="clear"></div>
+
                         </div>
                     </div>
                 </div>
