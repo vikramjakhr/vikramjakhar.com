@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"bytes"
 	"github.com/choudhary92/vikramjakhar.com/data"
+	"log"
 )
 
 const (
@@ -18,6 +19,7 @@ type TmplContext struct {
 }
 
 func registerHandlers() {
+	http.Handle("/page/", HttpFilter(http.HandlerFunc(Pagination)))
 	http.Handle("/about/", HttpFilter(http.HandlerFunc(About)))
 	http.Handle("/golang/", HttpFilter(http.HandlerFunc(Golang)))
 	http.Handle("/post", HttpFilter(http.HandlerFunc(Root)))
@@ -46,7 +48,10 @@ func execTmplToString(tmplName, path string, data interface{}) (string, error) {
 		return "", err
 	}
 	buff := bytes.Buffer{}
-	tmpl.ExecuteTemplate(&buff, tmplName, data)
+	err = tmpl.ExecuteTemplate(&buff, tmplName, data)
+	if err != nil {
+		log.Println(err)
+	}
 	return buff.String(), nil
 }
 

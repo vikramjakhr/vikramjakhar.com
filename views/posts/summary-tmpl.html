@@ -19,13 +19,13 @@
                                 <div class='wrapfullpost'>
                                     <div class='post hentry'>
                                         <h3 class='post-title entry-title' itemprop='headline'>
-                                            <a href='{{$Summary.URI}}'>{{$Summary.Title}}</a>
+                                            <a href='{{$Summary.Name}}'>{{$Summary.Title}}</a>
                                         </h3>
                                         <div class='post-header-line-1'></div>
                                         <div class='postmeta-primary'>
                                                     <span class='meta_author post-author vcard'>
                                                         <span class='fn'>
-                                                          <a class='g-profile' href='{{$Summary.AuthorProfileURI}}'
+                                                          <a class='g-profile' href='/about'
                                                              rel='author' title='author profile'>
                                                               <span>{{$Summary.Author}}</span>
                                                           </a>
@@ -35,14 +35,14 @@
                                                         <a class='timestamp-link' href='#' rel='bookmark'
                                                            title='permanent link'>
                                                             <span class='published updated' itemprop='datePublished'
-                                                                  title='{{$Summary.DatePublished}}'>{{$Summary.DatePublished}}</span>
+                                                                  title='{{$Summary.PublishDate}}'>{{$Summary.PublishDate}}</span>
                                                         </a>
                                                     </span>
                                             <span class='meta_categories'>
-                                                <a href='/golang' rel='tag'>{{$Summary.Tag}}</a>
+                                                <a href='/golang' rel='tag'>{{$Summary.Tags}}</a>
                                             </span>
                                             <span class='meta_comments'>
-                                                <a class='comment-link' href='#' onclick=''>{{$Summary.CmntCount}} comments</a>
+                                                <a class='comment-link' href='#' onclick=''>{{$Summary.CommentCount}} comments</a>
                                             </span>
                                             <span class='item-control blog-admin pid-533320333'>
                                                 <a href='#' title='Edit Post'>
@@ -53,7 +53,7 @@
                                         </div>
                                         <div class='post-body entry-content' id='post-body-1'>
                                             <div id="{{$Summary.ID}}"><img
-                                                    src="/assets/{{$Summary.ImageURI}}"
+                                                    src="/assets/images/{{$Summary.ImageUrl}}"
                                                     class="pbtthumbimg">
                                                 <div>
                                                     {{$Summary.Summary}}
@@ -62,8 +62,8 @@
                                             <script type='text/javascript'>createSummaryAndThumb("{{$Summary.ID}}");</script>
                                             <div class='pbtsharethisbutt'>
                                                 Share:
-                                                <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/{{$Summary.URI}}
-                                                &amp;src=sdkpreparse&amp;title={{$Summary.Title}}&amp;image=http://vikramjakhar.com/assets/{{$Summary.ImageURI}}'
+                                                <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{$Summary.Name}}
+                                                &amp;src=sdkpreparse&amp;title={{$Summary.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{$Summary.ImageUrl}}'
                                                    onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
                                                    rel='nofollow' target='_blank'
                                                    title='Share this on Facebook'>
@@ -84,7 +84,7 @@
                                                 </a>
                                             </div>
                                             <div class='readmore'>
-                                                <a href='{{$Summary.URI}}'>Read More</a>
+                                                <a href='/post/{{$Summary.Name}}'>Read More</a>
                                             </div>
                                             <div style='clear: both;'></div>
                                         </div>

@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"net/http"
-	"time"
 	"log"
+	"time"
 )
 
 func HttpFilter(handler http.Handler) http.Handler {
