@@ -7,7 +7,7 @@
     "author": "Vikram",
     "publishDate": 21315465,
     "tags": "Golang",
-    "commentCount": 555,
+    "commentCount": 0,
     "imageUrl": "introduction-to-go.jpg",
     "commentsFileName": "introduction-to-go.json",
     "summary": "As in modern era of rapid development, developers have to make an uncomfortable choice between rapid development and high performance while choosing a language for their projects. Languages like C and C++ offer fast execution, whereas"
@@ -20,7 +20,7 @@
     "author": "Vikram",
     "publishDate": 21315465,
     "tags": "Golang",
-    "commentCount": 555,
+    "commentCount": 0,
     "imageUrl": "arrays-in-go.png",
     "commentsFileName": "arrays-in-go.json",
     "summary": "Go provides three types of data structures to manage data collections: arrays, slices, and maps. An array is a fixed-length data type that contains the sequence of elements of a single type. An array is declared by"
@@ -33,7 +33,7 @@
     "author": "Vikram",
     "publishDate": 21315465,
     "tags": "Golang",
-    "commentCount": 555,
+    "commentCount": 0,
     "imageUrl": "working-with-slices-in-go.png",
     "commentsFileName": "working-with-slices-in-go.json",
     "summary": "A slice is a data structure that is very similar to an array, but without any specified length. Slices are abstraction built on top of an array type that provides a more convenient way of working with collections"
