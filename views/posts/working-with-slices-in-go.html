@@ -12,22 +12,22 @@
                             <div class='wrapfullpost'>
                                 <div class='post hentry'>
                                     <h3 class='post-title entry-title' itemprop='headline'>
-                                        <a href='{{.URI}}'>{{.Title}}</a>
+                                        <a href='/post/{{.Name}}'>{{.Title}}</a>
                                     </h3>
                                     <div class='post-header-line-1'></div>
                                     <div class='postmeta-primary'>
                                                     <span class='meta_author post-author vcard'>
                                                         <span class='fn' itemprop='author' itemscope='itemscope'>
-                                                            <a class='g-profile' href='{{.AuthorProfileURI}}' rel='author'
+                                                            <a class='g-profile' href='/about' rel='author'
                                                                title='author profile'>
                                                                 <span itemprop='name'>{{.Author}}</span></a></span></span>
                                                     <span class='meta_date'>
                                                         <a class='timestamp-link' href='#' rel='bookmark'
                                                            title='permanent link'>
                                                             <span class='published updated' itemprop='datePublished'
-                                                                  title='2016-07-25T07:40:00-07:00'>{{.DatePublished}}</span></a></span>
+                                                                  title='2016-07-25T07:40:00-07:00'>{{.PublishDate}}</span></a></span>
                                                     <span class='meta_comments'>
-                                                        <a id="commentCountLink" class='comment-link' href='#comments' onclick=''>{{.CmntCount}} comments</a>
+                                                        <a id="commentCountLink" class='comment-link' href='#comments' onclick=''>{{.CommentCount}} comments</a>
                                                     </span>
                                                     <span class='item-control blog-admin pid-3'>
                                                         <a href='#' title='Edit Post'>
@@ -41,7 +41,7 @@
                                         <p style="text-align: center;"><a
                                                 href="#"
                                                 rel="nofollow"><img
-                                                src="/assets/{{.ImageURI}}"
+                                                src="/assets/images/{{.ImageUrl}}"
                                                 style="max-width:100%; high: auto;"
                                                 alt="sfsdf"/></a>
                                             <br/>
@@ -128,8 +128,8 @@ func main() {
                                         </p>
                                         <div class='pbtsharethisbutt'>
                                             Share:
-                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/{{.URI}}
-                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/{{.ImageURI}}'
+                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
+                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{.ImageUrl}}'
                                                onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
                                                rel='nofollow' target='_blank'
                                                title='Share this on Facebook'>

@@ -2,8 +2,6 @@ package controllers
 
 import (
 	"net/http"
-	"strings"
-	"github.com/choudhary92/vikramjakhar.com/data"
 	"github.com/choudhary92/vikramjakhar.com/models"
 )
 
@@ -30,17 +28,18 @@ func register(w http.ResponseWriter, r *http.Request) {
 }
 
 type JoinInfo struct {
-	Email string
+	Email         string
 	IsAlreadyUsed bool
 }
 
 func join(w http.ResponseWriter, r *http.Request) {
-	var email string = ""
+	/*var email string = ""
 	if r.Method == "POST" {
 		email = strings.TrimSpace(r.FormValue("email"))
 	}
 	templateInfo := data.TemplateInfoMap["register"]
-	renderLayoutWithoutSidebar(w, r, templateInfo, templateInfo.Title, JoinInfo{Email:email, IsAlreadyUsed:false})
+	renderLayoutWithoutSidebar(w, r, templateInfo, templateInfo.Title, JoinInfo{Email:email, IsAlreadyUsed:false})*/
+	NotFound(w, r)
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
