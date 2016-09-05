@@ -1,0 +1,158 @@
+{{define "map-in-go"}}
+<div id='main-wrapper'>
+    <div class='main section' id='main'>
+        <div class='widget Blog' data-version='1' id='Blog1'>
+            <div class='blog-posts hfeed'>
+
+                <div class="date-outer">
+                    <h2 class='date-header'><span>Monday, July 25, 2016</span></h2>
+
+                    <div class="date-posts">
+                        <div class='post-outer'>
+                            <div class='wrapfullpost'>
+                                <div class='post hentry'>
+                                    <h3 class='post-title entry-title' itemprop='headline'>
+                                        <a href='{{.Name}}'>{{.Title}}</a>
+                                    </h3>
+                                    <div class='post-header-line-1'></div>
+                                    <div class='postmeta-primary'>
+                                                    <span class='meta_author post-author vcard'>
+                                                        <span class='fn' itemprop='author' itemscope='itemscope'>
+                                                            <a class='g-profile' href='/about'
+                                                               rel='author'
+                                                               title='author profile'>
+                                                                <span itemprop='name'>{{.Author}}</span></a></span></span>
+                                                    <span class='meta_date'>
+                                                        <a class='timestamp-link' href='#' rel='bookmark'
+                                                           title='permanent link'>
+                                                            <span class='published updated' itemprop='datePublished'
+                                                                  title='2016-07-25T07:40:00-07:00'>{{.PublishDate}}</span></a></span>
+                                                    <span class='meta_comments'>
+                                                        <a id="commentCountLink" class='comment-link' href='#comments' onclick=''>{{.CommentCount}} comments</a>
+                                                    </span>
+                                                    <span class='item-control blog-admin pid-533320333'>
+                                                        <a href='#' title='Edit Post'>
+                                                            <img alt='' class='icon-action' height='18'
+                                                                 src='/assets/images/icon18_edit_allbkg.gif'
+                                                                 width='18'/>
+                                                        </a>
+                                                    </span>
+                                    </div>
+                                    <div class='post-body entry-content' id='post-body-2219512222971299624'>
+                                        <p style="text-align: center;"><a
+                                                href="#"
+                                                rel="nofollow"><img
+                                                src="/assets/images/{{.ImageUrl}}"
+                                                style="max-width:100%; high: auto;"
+                                                alt="sfsdf"/></a>
+                                            <br/>
+                                        </p>
+                                        <p>Go provides built-in map type that implements hash table. A map is a data structure that
+                                            provides you an unordered collection of key/value pairs. As because map is based on the
+                                            hash table, it retrieve data very quickly.
+                                        </p>
+                                        <p><strong class="post-heading">&raquo; Declaring & Initialization</strong></p>
+                                        <p>Below is the code for declaring a map variable. It always holds nil. You cannot assign
+                                        any value in a nil map.</p>
+                                        <pre class="prettyprint">// map[KeyType]ValueType
+// A map with string as key and int as value
+var m map[string]int</pre>
+                                        <p>You can also declare map as in below code. It allocates memory to map and you can put value into it. </p>
+                                        <pre class="prettyprint">// declaring with type and initializing
+var num map[int]string = make(map[int]string)
+
+// OR without declaring with type as
+num := make(map[int]string)</pre>
+                                        <p>You can also initialize a map with values while declaring it as :</p>
+                                        <pre class="prettyprint">num := map[int]string{1:"ONE", 2:"TWO"}</pre>
+                                        <p><strong class="post-heading">&raquo; Rules for creating map key</strong></p>
+                                        <p>A map key can be any value from built-in or struct types except slices, function
+                                            and any other type that contains slices. As rule of thumb always use map key that
+                                        can be compared using == operator.</p>
+                                        <pre class="prettyprint">// map using slice of int as key
+// Compiler Error : invalid map key type []int
+s := map[[]int]string{}</pre>
+                                        <p>You can use slice as value type as :</p>
+                                        <pre class="prettyprint">s := map[int][]string{}</pre>
+                                        <p><strong class="post-heading">&raquo; Assigning values to a map</strong></p>
+                                        <pre class="prettyprint">num := map[int]string{}
+num[1] = "ONE"
+num[2] = "TWO"</pre>
+                                        <p>You cannot assign value to a nil map. below is the code</p>
+                                        <pre class="prettyprint">var num map[int]string
+num[1] = "ONE" // Error : assignment to entry in nil map</pre>
+                                        <p><strong class="post-heading">&raquo; Retrieving a map value</strong></p>
+                                        <p>You can retrive map value based on key, which also gives if exist status.exists status
+                                        is the boolen value based on existence of key in map.</p>
+                                        <pre class="prettyprint">// Retrieve value for key 1
+value, exists := num[1]
+// if exists key
+if exists {
+    fmt.Println(value)
+}</pre>
+                                        <p>You can also retrieve only value by ignoring exists part as :</p>
+                                        <pre class="prettyprint">value := num[1]
+// And check existence as
+if value != "" {
+    fmt.Println(value)
+}</pre>
+                                        <p><strong class="post-heading">&raquo; Iterating over map </strong></p>
+                                        <a href="https://play.golang.org/p/3bvCdRzkft" class="playground-link" target="_blank">
+                                            <pre class="prettyprint">num := map[int]string {
+    1 : "ONE",
+    2 : "TWO",
+    3 : "THREE",
+    4 : "FOUR", // Don't forget to add , after last entry, because it's Go.
+}
+for key, val := range num {
+    fmt.Printf("Key %d Value %s \n", key, val)
+}
+</pre></a>
+                                        <p><strong class="post-heading">&raquo; Removing an item from map</strong></p>
+                                        <p>You can remove an item from map based on key using delete function as :</p>
+                                        <pre class="prettyprint">// Remove key/value pair for the key 1
+// syntex : delete(map, key)
+delete(num, 1)</pre>
+
+                                        <div class='pbtsharethisbutt'>
+                                            Share:
+                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
+                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{.ImageUrl}}'
+                                               onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
+                                               rel='nofollow' target='_blank'
+                                               title='Share this on Facebook'>
+                                                <i class='fa fa-facebook'></i>
+                                            </a>
+                                            <a href='#' rel='nofollow' target='_blank' title='Tweet This!'>
+                                                <i class='fa fa-twitter'></i>
+                                            </a>
+                                            <a href='#' onclick='javascript:void(0);return false;' rel='nofollow'
+                                               target='_blank' title='Share this on Google+'>
+                                                <i class='fa fa-google-plus'></i>
+                                            </a>
+                                            <a class='social-iconnbt' href='#' rel='nofollow'
+                                               target='_blank' title='Share on Pinterest'>
+                                                <i class='fa fa-pinterest'></i>
+                                            </a>
+                                        </div>
+                                        <div style='clear: both;'></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='clear'></div>
+                            <input type="hidden" id="currentPage" value="{{.Name}}">
+                            <div id="comments"></div>
+                            <script src='/assets/js/comment.js' type='text/babel'></script>
+                            <div class="clear"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
+</div>
+{{end}}
