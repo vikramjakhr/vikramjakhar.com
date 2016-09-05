@@ -2393,3 +2393,7 @@ a#scroll-up:hover {
 .aComment a:hover{
     color: darkred;
 }
+
+.playground-link pre:hover{
+    border: 1px solid #1b6d85 !important;
+}

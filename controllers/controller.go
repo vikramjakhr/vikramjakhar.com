@@ -28,7 +28,7 @@ func Pagination(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			page = 1
 		}
-		fileName, max, t := GetFileName(page)
+		fileName, _, t := GetFileName(page)
 		blogs, err := GetAllPostsOfPage(fileName)
 		if err != nil {
 			NotFound(w, r)
@@ -39,7 +39,7 @@ func Pagination(w http.ResponseWriter, r *http.Request) {
 			a = 1
 		}
 		templateInfo := data.TemplateInfo{Title:"Vikram Jakhar", Name:"summary-tmpl", Path:postsPath + "summary-tmpl.html"}
-		renderMainLayout(w, r, templateInfo, templateInfo.Title, blogs[a - 1:a - 1 + max])
+		renderMainLayout(w, r, templateInfo, templateInfo.Title, blogs[a - (pagination * page):a])
 	default:
 		http.Error(w, "Method not Allowd", http.StatusMethodNotAllowed)
 	}

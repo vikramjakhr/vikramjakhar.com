@@ -15,7 +15,7 @@ import (
 const (
 	mainLayout string = "main-layout"
 	layoutWithoutSidebar string = "layout-without-sidebar"
-	postsPath string = "views/posts/"
+	postsPath string = "views/blogs/"
 	aboutPath string = "views/about/"
 )
 

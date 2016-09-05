@@ -3,10 +3,14 @@ package controllers
 import (
 	"net/http"
 	"github.com/choudhary92/vikramjakhar.com/models"
+	"github.com/choudhary92/vikramjakhar.com/data"
+	"strings"
+	"fmt"
 )
 
 func init() {
-	http.HandleFunc("/user/register", register)
+	http.HandleFunc("/user/registeration", register)
+	http.HandleFunc("/user/register", registration)
 	http.HandleFunc("/user/join", join)
 }
 
@@ -33,13 +37,23 @@ type JoinInfo struct {
 }
 
 func join(w http.ResponseWriter, r *http.Request) {
-	/*var email string = ""
+	var email string = ""
 	if r.Method == "POST" {
 		email = strings.TrimSpace(r.FormValue("email"))
 	}
-	templateInfo := data.TemplateInfoMap["register"]
-	renderLayoutWithoutSidebar(w, r, templateInfo, templateInfo.Title, JoinInfo{Email:email, IsAlreadyUsed:false})*/
-	NotFound(w, r)
+	fmt.Println(email)
+	//templateInfo := data.TemplateInfo{Title:"Register", Name:"register-tmpl", Path:"views/user/register-tmpl.html"}
+	//renderLayoutWithoutSidebar(w, r, templateInfo, templateInfo.Title, JoinInfo{Email:email, IsAlreadyUsed:false})
+}
+
+func registration(w http.ResponseWriter, r *http.Request) {
+	var email string = ""
+	if r.Method == "POST" {
+		email = strings.TrimSpace(r.FormValue("email"))
+	}
+	fmt.Println(email)
+	templateInfo := data.TemplateInfo{Title:"Register", Name:"register-tmpl", Path:"views/user/register-tmpl.html"}
+	renderLayoutWithoutSidebar(w, r, templateInfo, templateInfo.Title, JoinInfo{Email:email, IsAlreadyUsed:false})
 }
 
 func login(w http.ResponseWriter, r *http.Request) {

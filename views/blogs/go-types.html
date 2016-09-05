@@ -1,0 +1,188 @@
+{{define "go-types"}}
+<div id='main-wrapper'>
+    <div class='main section' id='main'>
+        <div class='widget Blog' data-version='1' id='Blog1'>
+            <div class='blog-posts hfeed'>
+
+                <div class="date-outer">
+                    <h2 class='date-header'><span>Monday, July 25, 2016</span></h2>
+
+                    <div class="date-posts">
+                        <div class='post-outer'>
+                            <div class='wrapfullpost'>
+                                <div class='post hentry'>
+                                    <h3 class='post-title entry-title' itemprop='headline'>
+                                        <a href='{{.Name}}'>{{.Title}}</a>
+                                    </h3>
+                                    <div class='post-header-line-1'></div>
+                                    <div class='postmeta-primary'>
+                                                    <span class='meta_author post-author vcard'>
+                                                        <span class='fn' itemprop='author' itemscope='itemscope'>
+                                                            <a class='g-profile' href='/about'
+                                                               rel='author'
+                                                               title='author profile'>
+                                                                <span itemprop='name'>{{.Author}}</span></a></span></span>
+                                                    <span class='meta_date'>
+                                                        <a class='timestamp-link' href='#' rel='bookmark'
+                                                           title='permanent link'>
+                                                            <span class='published updated' itemprop='datePublished'
+                                                                  title='2016-07-25T07:40:00-07:00'>{{.PublishDate}}</span></a></span>
+                                                    <span class='meta_comments'>
+                                                        <a id="commentCountLink" class='comment-link' href='#comments' onclick=''>{{.CommentCount}} comments</a>
+                                                    </span>
+                                                    <span class='item-control blog-admin pid-533320333'>
+                                                        <a href='#' title='Edit Post'>
+                                                            <img alt='' class='icon-action' height='18'
+                                                                 src='/assets/images/icon18_edit_allbkg.gif'
+                                                                 width='18'/>
+                                                        </a>
+                                                    </span>
+                                    </div>
+                                    <div class='post-body entry-content' id='post-body-2219512222971299624'>
+                                        <p style="text-align: center;"><a
+                                                href="#"
+                                                rel="nofollow"><img
+                                                src="/assets/images/{{.ImageUrl}}"
+                                                style="max-width:100%; high: auto;"
+                                                alt="sfsdf"/></a>
+                                            <br/>
+                                        </p>
+                                        <p>The type system is the most powerful feature for any programming language, types allows you to
+                                        organize and store your data in any application.</p>
+                                        <p>Go is a statically typed language, which means compiler needs to know in advance that what is the
+                                        type is for every value in the program. When a compiler knows the type information in advance, it helps
+                                        to make sure that program running with values in safe way.</p>
+                                        <p>Go follows a minimalistic approach for its type system. Go provides several built-in types such as int, bool, float64.
+                                            And also several composite types such as map, slices, channel which are made up of both built-in and user-defined types.
+                                        </p>
+                                        <p><strong style="color: darkred">&raquo; Built-in types</strong></p>
+                                        <p>Built in types are the one that provided by language itself. Below are the some useful built-in types in go.</p>
+                                        <pre class="prettyprint">// uint8 is the set of all unsigned 8-bit integers.
+type uint8 uint8
+
+// uint16 is the set of all unsigned 16-bit integers.
+type uint16 uint16
+
+// uint32 is the set of all unsigned 32-bit integers.
+type uint32 uint32
+
+// uint64 is the set of all unsigned 64-bit integers.
+type uint64 uint64
+
+// int8 is the set of all signed 8-bit integers.
+type int8 int8
+
+// int16 is the set of all signed 16-bit integers.
+type int16 int16
+
+// int32 is the set of all signed 32-bit integers.
+type int32 int32
+
+// int64 is the set of all signed 64-bit integers.
+type int64 int64
+
+// float32 is the set of all IEEE-754 32-bit floating-point numbers.
+type float32 float32
+
+// float64 is the set of all IEEE-754 64-bit floating-point numbers.
+type float64 float64
+
+// string is the set of all strings of 8-bit bytes, conventionally but not
+// necessarily representing UTF-8-encoded text. A string may be empty, but
+// not nil. Values of string type are immutable.
+type string string
+
+// int is a signed integer type that is at least 32 bits in size.
+// It is a distinct type, however, and not an alias for, say, int32.
+type int int
+
+// uint is an unsigned integer type that is at least 32 bits in size.
+// It is a distinct type, however, and not an alias for, say, uint32.
+type uint uint
+
+// byte is an alias for uint8 and is equivalent to uint8 in all ways. It is
+// used, by convention, to distinguish byte values from 8-bit unsigned
+// integer values.
+type byte byte</pre>
+                                        <p><strong style="color: darkred">&raquo; User-defined types</strong></p>
+                                        <p>Go allows you to declare your own types. In go you can declare a user-defined type by using the
+                                            <b>struct</b> keyword. In struct every field in user-defined type is declared from
+                                        a known type, which can be a built-in type or another user-defined type.</p>
+                                        <pre class="prettyprint">type user struct {
+    name string
+    email string
+    age int
+    height float64
+}</pre>
+                                        <p>And you can declare a variable of above user type as :</p>
+                                        <pre class="prettyprint">// Initialization with zero values
+var vikram user
+
+// OR with initialization
+vikram := user{
+    name: "vikram",
+    email: "xyz@gmail.com",
+    age: 24,
+    height: 5.11,
+}
+
+// OR in a single line without field names
+vikram := user{ "vikram", "xyz@gmail.com", 24, 5.11 }</pre>
+                                        <p>You can also declare a user-defined type for a built-in type as :</p>
+                                        <pre class="prettyprint">type Price float</pre>
+                                        <p>In above code snippet even though Price is declared as float type but Go consider it as
+                                        different type, which means you cannot assign float value directly. Below is an example.</p>
+                                        <a class="playground-link" href="https://play.golang.org/p/3DFonQSool" target="_blank">
+                                            <pre class="prettyprint">package main
+
+type Price float64
+
+func main() {
+    var price Price
+    // Compiler error : cannot use float64(33.43) (type float64) as
+    // type Price in assignment
+    price = float64(33.43)
+}
+</pre></a>
+                                        <div class='pbtsharethisbutt'>
+                                            Share:
+                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
+                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{.ImageUrl}}'
+                                               onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
+                                               rel='nofollow' target='_blank'
+                                               title='Share this on Facebook'>
+                                                <i class='fa fa-facebook'></i>
+                                            </a>
+                                            <a href='#' rel='nofollow' target='_blank' title='Tweet This!'>
+                                                <i class='fa fa-twitter'></i>
+                                            </a>
+                                            <a href='#' onclick='javascript:void(0);return false;' rel='nofollow'
+                                               target='_blank' title='Share this on Google+'>
+                                                <i class='fa fa-google-plus'></i>
+                                            </a>
+                                            <a class='social-iconnbt' href='#' rel='nofollow'
+                                               target='_blank' title='Share on Pinterest'>
+                                                <i class='fa fa-pinterest'></i>
+                                            </a>
+                                        </div>
+                                        <div style='clear: both;'></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='clear'></div>
+                            <input type="hidden" id="currentPage" value="{{.Name}}">
+                            <div id="comments"></div>
+                            <script src='/assets/js/comment.js' type='text/babel'></script>
+                            <div class="clear"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
+</div>
+{{end}}
