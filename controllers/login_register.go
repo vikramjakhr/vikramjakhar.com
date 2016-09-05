@@ -42,8 +42,8 @@ func join(w http.ResponseWriter, r *http.Request) {
 		email = strings.TrimSpace(r.FormValue("email"))
 	}
 	fmt.Println(email)
-	//templateInfo := data.TemplateInfo{Title:"Register", Name:"register-tmpl", Path:"views/user/register-tmpl.html"}
-	//renderLayoutWithoutSidebar(w, r, templateInfo, templateInfo.Title, JoinInfo{Email:email, IsAlreadyUsed:false})
+	templateInfo := data.TemplateInfo{Title:"Register", Name:"register-tmpl", Path:"views/user/register-tmpl.html"}
+	renderLayoutWithoutSidebar(w, r, templateInfo, templateInfo.Title, JoinInfo{Email:email, IsAlreadyUsed:false})
 }
 
 func registration(w http.ResponseWriter, r *http.Request) {

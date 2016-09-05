@@ -39,7 +39,7 @@ func Pagination(w http.ResponseWriter, r *http.Request) {
 			a = 1
 		}
 		templateInfo := data.TemplateInfo{Title:"Vikram Jakhar", Name:"summary-tmpl", Path:postsPath + "summary-tmpl.html"}
-		renderMainLayout(w, r, templateInfo, templateInfo.Title, blogs[0:6])
+		renderMainLayout(w, r, templateInfo, templateInfo.Title, blogs[0:5])
 	default:
 		http.Error(w, "Method not Allowd", http.StatusMethodNotAllowed)
 	}

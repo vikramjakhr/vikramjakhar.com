@@ -90,7 +90,7 @@ type BlogMetadata struct {
 	Title            string `json:"title"`
 	TmplFileName     string `json:"tmplFileName"`
 	Author           string `json:"author"`
-	PublishDate      int64 `json:"publishDate"`
+	PublishDate      string `json:"publishDate"`
 	Tags             string `json:"tags"`
 	CommentCount     int64 `json:"commentCount"`
 	ImageUrl         string `json:"imageUrl"`

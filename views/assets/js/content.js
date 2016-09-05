@@ -6,6 +6,7 @@ img_thumb_width = 200;
 jQuery(document).ready(function () {
 
     prettyPrint();
+    jQuery("time.timeago").timeago();
 
     jQuery(".join-form form").on("submit", function (e) {
         var email = jQuery(this).serializeArray()[0].value;
