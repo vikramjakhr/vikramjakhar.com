@@ -14,7 +14,7 @@ func init() {
 	parseLayoutWithoutSidebar()
 }
 
-var pagination int64 = 5
+var pagination int64 = 3
 
 func Root(w http.ResponseWriter, r *http.Request) {
 	Pagination(w, r)
@@ -39,7 +39,7 @@ func Pagination(w http.ResponseWriter, r *http.Request) {
 			a = 1
 		}
 		templateInfo := data.TemplateInfo{Title:"Vikram Jakhar", Name:"summary-tmpl", Path:postsPath + "summary-tmpl.html"}
-		renderMainLayout(w, r, templateInfo, templateInfo.Title, blogs[a - (pagination * page):a])
+		renderMainLayout(w, r, templateInfo, templateInfo.Title, blogs[0:6])
 	default:
 		http.Error(w, "Method not Allowd", http.StatusMethodNotAllowed)
 	}

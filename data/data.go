@@ -24,5 +24,6 @@ func initBlogMetadata() {
 	metadata["working-with-slices-in-go"] = "2,blog-1-to-20.json"
 	metadata["go-types"] = "3,blog-1-to-20.json"
 	metadata["concurrency-in-go"] = "4,blog-1-to-20.json"
+	metadata["map-in-go"] = "5,blog-1-to-20.json"
 	BlogMetaInfo = BlogMetadata{(int64(len(metadata))), metadata}
 }

@@ -127,7 +127,7 @@ func GetAllPostsOfPage(fileName string) ([]BlogMetadata, error) {
 func GetFileName(page int64) (string, int64, int64) {
 	var fileName string
 	var t, max int64 = 1, data.BlogMetaInfo.TotalBlogs
-	if page > 0 && (page * pagination) <= data.BlogMetaInfo.TotalBlogs {
+	if page > 0 && pagination <= data.BlogMetaInfo.TotalBlogs {
 		t = (page * pagination) / 20
 		fileName = "blog-" + strconv.FormatInt(t * 20 + 1, 10) + "-to-" + strconv.FormatInt(t * 20 + 20, 10) + ".json"
 		max = pagination
