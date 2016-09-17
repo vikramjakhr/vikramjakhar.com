@@ -146,7 +146,8 @@ func Float64sAreSorted(a []float64) bool { return IsSorted(Float64Slice(a)) }
 
 // tests whether a slice of strings is sorted in increasing order.
 func StringsAreSorted(a []string) bool { return IsSorted(StringSlice(a)) }</pre>
-                                        <p>To check sorting on custom sorting of elements you need to call sort.IsSorted method that
+                                        <p>To check sorting on custom sorting of elements you need to call sort.IsSorted
+                                            method that
                                             takes slice as argument.
                                             For above example of strings sorting based on length, you can call IsSorted
                                             as :</p>
@@ -161,8 +162,10 @@ func StringsAreSorted(a []string) bool { return IsSorted(StringSlice(a)) }</pre>
 }</pre>
                                         </a>
                                         <p><strong class="post-heading">&raquo; Sorting a struct type </strong></p>
-                                        <p>You can also sort a struct by implementing custom sorting. Below is the example that
-                                        creates a struct of User and sorts the slice of Users based on the age of the user.</p>
+                                        <p>You can also sort a struct by implementing custom sorting. Below is the
+                                            example that
+                                            creates a struct of User and sorts the slice of Users based on the age of
+                                            the user.</p>
                                         <a href="https://play.golang.org/p/SktP8TyiPv" class="playground-link"
                                            target="_blank">
                                             <pre class="prettyprint">// struct of User
@@ -209,13 +212,10 @@ func main() {
                                         </a>
                                         <div class='pbtsharethisbutt'>
                                             Share:
-                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
-                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{.ImageUrl}}
-                                                &description=In golang sort package provides primitives for sorting slices and user-defined collections. Go has Sort function for some of the predefined types, and also you can define your
-                                                &link=http://vikramjakhar.com/post/{{.Name}}
-                                                &picture=http://vikramjakhar.com/assets/images/{{.ImageUrl}}'
+                                            <a class="fb-sharer"
                                                onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
-                                               rel='nofollow' target='_blank'
+                                               rel='nofollow'
+                                               target='_blank'
                                                title='Share this on Facebook'>
                                                 <i class='fa fa-facebook'></i>
                                             </a>
@@ -225,10 +225,6 @@ func main() {
                                             <a href='#' onclick='javascript:void(0);return false;' rel='nofollow'
                                                target='_blank' title='Share this on Google+'>
                                                 <i class='fa fa-google-plus'></i>
-                                            </a>
-                                            <a class='social-iconnbt' href='#' rel='nofollow'
-                                               target='_blank' title='Share on Pinterest'>
-                                                <i class='fa fa-pinterest'></i>
                                             </a>
                                         </div>
                                         <div style='clear: both;'></div>

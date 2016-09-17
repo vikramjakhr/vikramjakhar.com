@@ -2,6 +2,7 @@ summary_noimg = 350;
 summary_img = 375;
 img_thumb_height = 150;
 img_thumb_width = 200;
+hostName = "http://vikramjakhar.com";
 
 jQuery(document).ready(function () {
 
@@ -10,21 +11,21 @@ jQuery(document).ready(function () {
 
     jQuery(".join-form form").on("submit", function (e) {
         var email = jQuery(this).serializeArray()[0].value;
-        if (jQuery.trim(email).length < 3){
+        if (jQuery.trim(email).length < 3) {
             e.preventDefault();
-            jQuery(".join-form form div input").css({"border-color":"red"});
+            jQuery(".join-form form div input").css({"border-color": "red"});
         }
     });
 
     jQuery(".join-form form div input").on("focus", function () {
-        jQuery(".join-form form div input").css({"border-color":"#ccc"});
+        jQuery(".join-form form div input").css({"border-color": "#ccc"});
     });
 
     jQuery("form#login").on("submit", function (e) {
         e.preventDefault();
         alert("This feature is under developemnt. Keep patience.")
     });
-    
+
     jQuery("form#registrationForm").on("submit", function (e) {
         e.preventDefault();
         alert("This feature is under developemnt. Keep patience.")
@@ -47,10 +48,10 @@ jQuery(document).ready(function () {
         });
     });
     jQuery('.commentTxtArea').on('paste input', function () {
-        if ($(this).outerHeight() > this.scrollHeight){
+        if ($(this).outerHeight() > this.scrollHeight) {
             $(this).height(40)
         }
-        while ($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))){
+        while ($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
             $(this).height($(this).height() + 1)
         }
     });
@@ -62,13 +63,19 @@ jQuery(document).ready(function () {
         return false;
     });
 
-    /*jQuery('.commentTxtArea').keypress(function(event){
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if(keycode == '13'){
-            alert('You pressed a "enter" key in textbox');
-        }
-
-    });*/
+    jQuery(function () {
+        var title = jQuery("h3.post-title a").text();
+        var name = jQuery("h3.post-title a").attr("href");
+        var picture = jQuery("div.post-body p:nth-child(1) a img").attr("src");
+        var description = "&description=" + jQuery(".post-body p:nth-child(2)").text();
+        var href = "https://www.facebook.com/sharer/sharer.php?u=" + hostName + name + "\
+        &src=sdkpreparse\
+        &title=" + title + "\
+        &link=" + hostName + name + "\
+        &picture=" + hostName + picture + "\
+        &description=" + description;
+        jQuery(".fb-sharer").attr("href", href);
+    });
 });
 
 function isValidEmail(email) {

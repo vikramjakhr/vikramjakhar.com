@@ -12,7 +12,7 @@
                             <div class='wrapfullpost'>
                                 <div class='post hentry'>
                                     <h3 class='post-title entry-title' itemprop='headline'>
-                                        <a href='{{.Name}}'>{{.Title}}</a>
+                                        <a href='/post/{{.Name}}'>{{.Title}}</a>
                                     </h3>
                                     <div class='post-header-line-1'></div>
                                     <div class='postmeta-primary'>
@@ -145,10 +145,10 @@ func main() {
 </pre></a>
                                         <div class='pbtsharethisbutt'>
                                             Share:
-                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
-                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{.ImageUrl}}'
+                                            <a class="fb-sharer"
                                                onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
-                                               rel='nofollow' target='_blank'
+                                               rel='nofollow'
+                                               target='_blank'
                                                title='Share this on Facebook'>
                                                 <i class='fa fa-facebook'></i>
                                             </a>
@@ -158,10 +158,6 @@ func main() {
                                             <a href='#' onclick='javascript:void(0);return false;' rel='nofollow'
                                                target='_blank' title='Share this on Google+'>
                                                 <i class='fa fa-google-plus'></i>
-                                            </a>
-                                            <a class='social-iconnbt' href='#' rel='nofollow'
-                                               target='_blank' title='Share on Pinterest'>
-                                                <i class='fa fa-pinterest'></i>
                                             </a>
                                         </div>
                                         <div style='clear: both;'></div>
