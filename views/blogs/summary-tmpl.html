@@ -8,7 +8,7 @@
         <div class='main section' id='main'>
             <div class='widget Blog' data-version='1' id='Blog1'>
 
-                {{range $Summary := $}}
+                {{range $Summary := $.Data}}
 
                 <div class='blog-posts hfeed'>
 
@@ -98,10 +98,15 @@
                 {{end}}
 
                 <div class='blog-pager' id='blog-pager'>
+                    {{ if gt $.Next 0 }}
                     <span id='blog-pager-older-link'>
-                        <a class='blog-pager-older-link' href='/home' id='Blog1_blog-pager-older-link' title='Older Posts'>Older Posts&nbsp;&rarr;</a>
+                        <a class='blog-pager-older-link' href='/page/{{$.Next}}' id='Blog1_blog-pager-older-link'
+                           title='Older Posts'>Older Posts&nbsp;&rarr;</a>
                     </span>
-                    <a class='home-link' href='/home'>Home</a>
+                    {{end}}
+                    {{ if gt $.Prev -1 }}
+                    <a class='home-link' href='/page/{{$.Prev}}' style="float: left">&larr;&nbsp;Prev</a>
+                    {{end}}
                 </div>
                 <div class='clear'></div>
                 <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>

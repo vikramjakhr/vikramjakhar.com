@@ -6,6 +6,7 @@ import (
 	"strings"
 	"github.com/choudhary92/vikramjakhar.com/data"
 	"strconv"
+	"fmt"
 )
 
 func init() {
@@ -14,7 +15,7 @@ func init() {
 	parseLayoutWithoutSidebar()
 }
 
-var pagination int64 = 3
+var pagination int64 = 5
 
 func Root(w http.ResponseWriter, r *http.Request) {
 	Pagination(w, r)
@@ -24,22 +25,32 @@ func Pagination(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		s := strings.Split(r.RequestURI, "/")
-		page, err := strconv.ParseInt(s[len(s) - 1], 10, 0)
-		if err != nil {
-			page = 1
-		}
-		fileName, _, t := GetFileName(page)
+		page, _ := strconv.ParseInt(s[len(s) - 1], 10, 0)
+		fmt.Println(page)
+		fileName, _, _ := GetFileName(page)
 		blogs, err := GetAllPostsOfPage(fileName)
 		if err != nil {
 			NotFound(w, r)
 			return
 		}
-		a := (page * pagination) - (t * 20)
-		if a < 1 {
-			a = 1
+		start := page * pagination
+		end := start + pagination
+
+		if start >= data.BlogMetaInfo.TotalBlogs {
+			start = 0;
+			end = pagination;
+		}
+		if end > data.BlogMetaInfo.TotalBlogs {
+			end = data.BlogMetaInfo.TotalBlogs
+		}
+		next := page + 1
+		prev := page - 1
+		if (next * pagination) >= data.BlogMetaInfo.TotalBlogs {
+			next = -1
 		}
 		templateInfo := data.TemplateInfo{Title:"Vikram Jakhar", Name:"summary-tmpl", Path:postsPath + "summary-tmpl.html"}
-		renderMainLayout(w, r, templateInfo, templateInfo.Title, blogs[0:5])
+		data := Data{Data:blogs[start:end], Next:next, Prev:prev}
+		renderMainLayout(w, r, templateInfo, templateInfo.Title, data)
 	default:
 		http.Error(w, "Method not Allowd", http.StatusMethodNotAllowed)
 	}

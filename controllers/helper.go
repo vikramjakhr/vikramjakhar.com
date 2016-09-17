@@ -27,6 +27,12 @@ type TmplContext struct {
 	Title   string
 }
 
+type Data struct {
+	Data interface{}
+	Next int64
+	Prev int64
+}
+
 func registerHandlers() {
 	http.Handle("/page/", HttpFilter(http.HandlerFunc(Pagination)))
 	http.Handle("/about/", HttpFilter(http.HandlerFunc(About)))
