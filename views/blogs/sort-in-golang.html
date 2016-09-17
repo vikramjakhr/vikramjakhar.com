@@ -47,12 +47,15 @@
                                             <br/>
                                         </p>
                                         <p>
-                                            In golang sort package provides primitives for sorting slices and user-defined collections. Go has
-                                            Sort function for some of the predefined types, and also you can define your own sorting for any type
+                                            In golang sort package provides primitives for sorting slices and
+                                            user-defined collections. Go has
+                                            Sort function for some of the predefined types, and also you can define your
+                                            own sorting for any type
                                             which satisfies sort.Interface.
                                         </p>
-                                        <p>All functions related to sort in sort package operates on slices and all these are in place, which means changes the value of
-                                        slice iteself which needs to be sorted. It not create any copy of slice.</p>
+                                        <p>All functions related to sort in sort package operates on slices and all
+                                            these are in place, which means changes the value of
+                                            slice iteself which needs to be sorted. It not create any copy of slice.</p>
                                         <p><strong class="post-heading">&raquo; Sorting strings </strong></p>
                                         <p>You can sort any slice of string by using sort.Strings function.</p>
                                         <pre class="prettyprint">func Strings(a []string)</pre>
@@ -68,10 +71,13 @@
 }</pre>
                                         </a>
                                         <p><strong class="post-heading">&raquo; Implementing custom sorting</strong></p>
-                                        <p>In Go to implement our own sorting, we need to declare a type which satisfies sort.Interface.
+                                        <p>In Go to implement our own sorting, we need to declare a type which satisfies
+                                            sort.Interface.
                                             A type, typically a collection, that satisfies sort.Interface can be
-                                            sorted by the sort package. sort.Interface contains 3 methods namely Len,Swap and Less,
-                                            we need to provide definition for all these 3 methods to implement our custom sorting.
+                                            sorted by the sort package. sort.Interface contains 3 methods namely
+                                            Len,Swap and Less,
+                                            we need to provide definition for all these 3 methods to implement our
+                                            custom sorting.
                                         </p>
                                         <p>Declaration of sort.Interface in sort package is as :</p>
                                         <pre class="prettyprint">type Interface interface {
@@ -83,9 +89,11 @@
     // Swap swaps the elements with indexes i and j.
     Swap(i, j int)
 }</pre>
-                                        <p><strong class="post-heading">&raquo; Custom Sorting of strings based on length</strong></p>
-                                        <p>Below is the example that do sorting of strings based on length by using custom sorting
-                                        mechanism.</p>
+                                        <p><strong class="post-heading">&raquo; Custom Sorting of strings based on
+                                            length</strong></p>
+                                        <p>Below is the example that do sorting of strings based on length by using
+                                            custom sorting
+                                            mechanism.</p>
                                         <a href="https://play.golang.org/p/tbq5kln8id" class="playground-link"
                                            target="_blank">
                                             <pre class="prettyprint">// Custom type representing slice of string
@@ -114,13 +122,97 @@ func main() {
     fmt.Println(fruits) // [guava apple banana pineapple]
 }</pre>
                                         </a>
+                                        <p><strong class="post-heading">&raquo; Useful sorting methods </strong></p>
+                                        <p>sort package also provides predefined implementation for some fo the types.
+                                            Some of them are...</p>
+                                        <pre class="prettyprint">// Ints sorts a slice of ints in increasing order.
+func Ints(a []int) { Sort(IntSlice(a)) }
+
+// Float64s sorts a slice of float64s in increasing order.
+func Float64s(a []float64) { Sort(Float64Slice(a)) }
+
+// Strings sorts a slice of strings in increasing order.
+func Strings(a []string) { Sort(StringSlice(a)) }</pre>
+                                        <p><strong class="post-heading">&raquo; Checking if any slice is
+                                            sorted </strong></p>
+                                        <p>Go's sort package also provides some methods to check that any slice is
+                                            sorted or not.
+                                            These are :</p>
+                                        <pre class="prettyprint">// tests whether a slice of ints is sorted in increasing order.
+func IntsAreSorted(a []int) bool { return IsSorted(IntSlice(a)) }
+
+// tests whether a slice of float64s is sorted in increasing order.
+func Float64sAreSorted(a []float64) bool { return IsSorted(Float64Slice(a)) }
+
+// tests whether a slice of strings is sorted in increasing order.
+func StringsAreSorted(a []string) bool { return IsSorted(StringSlice(a)) }</pre>
+                                        <p>To check sorting on custom sorting of elements you need to call sort.IsSorted method that
+                                            takes slice as argument.
+                                            For above example of strings sorting based on length, you can call IsSorted
+                                            as :</p>
+                                        <a href="https://play.golang.org/p/VIbjvZix6O" class="playground-link"
+                                           target="_blank">
+                                        <pre class="prettyprint">func main() {
+    fruits := []string{"pineapple", "banana", "guava", "apple"}
+    sort.Sort(ByLength(fruits))
+    fmt.Println(fruits) // [guava apple banana pineapple]
+    // Checks if fruits are in sorted order and prints result
+    fmt.Println(sort.IsSorted(ByLength(fruits))) // true
+}</pre>
+                                        </a>
+                                        <p><strong class="post-heading">&raquo; Sorting a struct type </strong></p>
+                                        <p>You can also sort a struct by implementing custom sorting. Below is the example that
+                                        creates a struct of User and sorts the slice of Users based on the age of the user.</p>
+                                        <a href="https://play.golang.org/p/SktP8TyiPv" class="playground-link"
+                                           target="_blank">
+                                            <pre class="prettyprint">// struct of User
+type User struct {
+	Name string
+	Age  int64
+}
+
+// type representing slice of struct User
+type ByAge []User
+
+// Implementing Len() method of sort.Interface
+func (u ByAge) Len() int {
+	return len(u)
+}
+
+// Implementing Swap() method of sort.Interface
+func (u ByAge) Swap(i, j int) {
+	u[i], u[j] = u[j], u[i]
+}
+
+// Implementing Less() method of sort.Interface
+func (u ByAge) Less(i, j int) bool {
+	return u[i].Age < u[j].Age
+}
+
+func main() {
+	// slice of Users
+	users := []User{
+                        User{"Vikram", 24},
+                        User{"Amit", 20},
+                        User{"Deepu", 26},
+                    }
+	// Before Sorting
+	fmt.Println(users) // [{Vikram 24} {Amit 20} {Deepu 22}]
+	// Perform Sorting
+	sort.Sort(ByAge(users))
+	// After Sorting
+	fmt.Println(users) // [{Amit 20} {Vikram 24} {Deepu 22}]
+	// Checking wheather elements are in sorted order
+	fmt.Println(sort.IsSorted(ByAge(users)))
+}
+</pre>
+                                        </a>
                                         <div class='pbtsharethisbutt'>
                                             Share:
                                             <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
                                                 &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{.ImageUrl}}
-                                                &description=Go has an interesting approach to parse string object to time and time object to string.
-                                                Go supports time formatting and parsing via pattern based layouts. Go time package provides
-                                                &link=http://vikramjakhar.com/post/working-with-date-time-in-go
+                                                &description=In golang sort package provides primitives for sorting slices and user-defined collections. Go has Sort function for some of the predefined types, and also you can define your
+                                                &link=http://vikramjakhar.com/post/{{.Name}}
                                                 &picture=http://vikramjakhar.com/assets/images/{{.ImageUrl}}'
                                                onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
                                                rel='nofollow' target='_blank'
@@ -140,38 +232,38 @@ func main() {
                                             </a>
                                         </div>
                                         <div style='clear: both;'></div>
-                                </div>
-                                <div class='post-iconspbt'>
+                                    </div>
+                                    <div class='post-iconspbt'>
 <span class='post-icons' style='padding-right:10px;'>
 </span>
-                                    <div style='clear: both;'></div>
-                                </div>
-                                <div class='post-location post-locationpbt'>
-                                </div>
-                                <div class='related-postbwrap' id='bpostrelated-post'></div>
-                                <div style='clear: both;'></div>
-                                <div class='post-footer'>
-                                    <div class='post-footer-line post-footer-line-'></div>
-                                    <div class='post-footer-line post-footer-line-2'>
+                                        <div style='clear: both;'></div>
                                     </div>
-                                    <div class='post-footer-line post-footer-line-3'></div>
+                                    <div class='post-location post-locationpbt'>
+                                    </div>
+                                    <div class='related-postbwrap' id='bpostrelated-post'></div>
+                                    <div style='clear: both;'></div>
+                                    <div class='post-footer'>
+                                        <div class='post-footer-line post-footer-line-'></div>
+                                        <div class='post-footer-line post-footer-line-2'>
+                                        </div>
+                                        <div class='post-footer-line post-footer-line-3'></div>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class='clear'></div>
+                            <input type="hidden" id="currentPage" value="{{.Name}}">
+                            <div id="comments"></div>
+                            <script src='/assets/js/comment.js' type='text/babel'></script>
+                            <div class="clear"></div>
+
                         </div>
-
-                        <div class='clear'></div>
-                        <input type="hidden" id="currentPage" value="{{.Name}}">
-                        <div id="comments"></div>
-                        <script src='/assets/js/comment.js' type='text/babel'></script>
-                        <div class="clear"></div>
-
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
+        <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
     </div>
-    <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
-</div>
 </div>
 {{end}}

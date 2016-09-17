@@ -88,6 +88,6 @@
     "commentCount": 0,
     "imageUrl": "sort-in-golang.png",
     "commentsFileName": "sort-in-golang.json",
-    "summary": "Go has an interesting approach to parse string object to time and time object to string. Go supports time formatting and parsing via pattern based layouts. Go's time package provides "
+    "summary": "In golang sort package provides primitives for sorting slices and user-defined collections. Go has Sort function for some of the predefined types, and also you can define your"
   }
 ]
