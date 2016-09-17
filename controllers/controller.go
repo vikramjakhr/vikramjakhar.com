@@ -6,7 +6,6 @@ import (
 	"strings"
 	"github.com/choudhary92/vikramjakhar.com/data"
 	"strconv"
-	"fmt"
 )
 
 func init() {
@@ -26,7 +25,6 @@ func Pagination(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		s := strings.Split(r.RequestURI, "/")
 		page, _ := strconv.ParseInt(s[len(s) - 1], 10, 0)
-		fmt.Println(page)
 		fileName, _, _ := GetFileName(page)
 		blogs, err := GetAllPostsOfPage(fileName)
 		if err != nil {

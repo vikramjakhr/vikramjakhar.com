@@ -55,6 +55,13 @@ jQuery(document).ready(function () {
         }
     });
 
+    jQuery('a.comment-link').click(function () {
+        jQuery('body,html').animate({
+            scrollTop: jQuery("#comments").offset().top
+        }, 600);
+        return false;
+    });
+
     /*jQuery('.commentTxtArea').keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
