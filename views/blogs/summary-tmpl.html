@@ -42,9 +42,11 @@
                                             <span class='meta_categories'>
                                                 <a href='/golang' rel='tag'>{{$Summary.Tags}}</a>
                                             </span>
-                                            <span class='meta_comments'>
-                                                <a class='comment-link' href='#' onclick=''>{{$Summary.CommentCount}} comments</a>
-                                            </span>
+                                            <!--<span class='meta_comments'>
+                                                <a class='comment-link' href='/post/{{$Summary.Name}}#comments' onclick=''>{{$Summary.CommentCount}} comments</a>
+                                            </span>-->
+                                            <div id="commentCount"></div>
+                                            <script src='/assets/js/commentCount.js' type='text/babel'></script>
                                             <span class='item-control blog-admin pid-533320333'>
                                                 <a href='#' title='Edit Post'>
                                                     <img alt='' class='icon-action' height='18'
@@ -63,11 +65,11 @@
                                             <script type='text/javascript'>createSummaryAndThumb("{{$Summary.ID}}");</script>
                                             <div class='pbtsharethisbutt'>
                                                 Share:
-                                                <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
                                                 &src=sdkpreparse&title={{$Summary.Title}}
                                                 &description={{$Summary.Summary}}
                                                 &link=http://vikramjakhar.com/post/{{$Summary.Name}}
-                                                &picture=http://vikramjakhar.com/assets/images/{{$Summary.ImageUrl}}'
+                                                &picture=http://vikramjakhar.com/assets/images/{{$Summary.ImageUrl}}"
                                                    onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
                                                    rel='nofollow' target='_blank'
                                                    title='Share this on Facebook'>
@@ -81,10 +83,6 @@
                                                    rel='nofollow' target='_blank'
                                                    title='Share this on Google+'>
                                                     <i class='fa fa-google-plus'></i>
-                                                </a>
-                                                <a class='social-iconnbt' href='#' rel='nofollow' target='_blank'
-                                                   title='Share on Pinterest'>
-                                                    <i class='fa fa-pinterest'></i>
                                                 </a>
                                             </div>
                                             <div class='readmore'>
