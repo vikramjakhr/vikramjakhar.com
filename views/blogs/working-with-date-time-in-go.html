@@ -1,0 +1,295 @@
+{{define "working-with-date-time-in-go"}}
+<div id='main-wrapper'>
+    <div class='main section' id='main'>
+        <div class='widget Blog' data-version='1' id='Blog1'>
+            <div class='blog-posts hfeed'>
+
+                <div class="date-outer">
+                    <h2 class='date-header'><span>Monday, July 25, 2016</span></h2>
+
+                    <div class="date-posts">
+                        <div class='post-outer'>
+                            <div class='wrapfullpost'>
+                                <div class='post hentry'>
+                                    <h3 class='post-title entry-title' itemprop='headline'>
+                                        <a href='/post/{{.Name}}'>{{.Title}}</a>
+                                    </h3>
+                                    <div class='post-header-line-1'></div>
+                                    <div class='postmeta-primary'>
+                                                    <span class='meta_author post-author vcard'>
+                                                        <span class='fn' itemprop='author' itemscope='itemscope'>
+                                                            <a class='g-profile' href='/about' rel='author'
+                                                               title='author profile'>
+                                                                <span itemprop='name'>{{.Author}}</span></a></span></span>
+                                                    <span class='meta_date'>
+                                                        <a class='timestamp-link' href='#' rel='bookmark'
+                                                           title='permanent link'>
+                                                            <time class="timeago" datetime="{{.PublishDate}}">{{.PublishDate}}</time></a></span>
+                                                    <span class='meta_comments'>
+                                                        <a id="commentCountLink" class='comment-link' href='#comments'
+                                                           onclick=''>{{.CommentCount}} comments</a>
+                                                    </span>
+                                                    <span class='item-control blog-admin pid-3'>
+                                                        <a href='#' title='Edit Post'>
+                                                            <img alt='' class='icon-action' height='18'
+                                                                 src='/assets/images/icon18_edit_allbkg.gif'
+                                                                 width='18'/>
+                                                        </a>
+                                                    </span>
+                                    </div>
+                                    <div class='post-body entry-content' id='post-body-3'>
+                                        <p style="text-align: center;"><a
+                                                href="#"
+                                                rel="nofollow"><img
+                                                src="/assets/images/{{.ImageUrl}}"
+                                                style="max-width:100%; high: auto;"
+                                                alt="sfsdf"/></a>
+                                            <br/>
+                                        </p>
+                                        <p>
+                                            Go has an interesting approach to parse string object to time and time
+                                            object to string.
+                                            Go supports time formatting and parsing via pattern based layouts. Go's <b>time</b>
+                                            package provides
+                                            all the necessary constants, functions and methods to work with time and
+                                            date in any go program.
+                                        </p>
+                                        <p><strong class="post-heading">&raquo; Current time (Now)</strong></p>
+                                        <a href="https://play.golang.org/p/K_-aB-msC7" class="playground-link"
+                                           target="_blank">
+                                        <pre class="prettyprint">package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	// Get the current time.
+	t := time.Now()
+	fmt.Println(t)
+
+	// Print year, month and day of the current time.
+	fmt.Println(t.Year())
+	fmt.Println(t.Month())
+	fmt.Println(t.Day())
+}
+</pre>
+                                        </a>
+                                        <p>Output : </p>
+                                        <pre class="prettyprint">2016-09-17 13:55:40.557941309 +0530 IST
+2016
+September
+17</pre>
+                                        <p><strong class="post-heading">&raquo; Creating time/date using
+                                            Time.Date</strong></p>
+                                        <p>In Go you can create custom time by using time.Date function. </p>
+                                        <pre class="prettyprint">func Date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time</pre>
+                                        <p>Here is the example that creates custom time.</p>
+                                        <a href="https://play.golang.org/p/1Zu-HL-ctY" class="playground-link"
+                                           target="_blank">
+                                        <pre class="prettyprint">func main() {
+	// Create a Date in 1992.
+	t := time.Date(1992, 12, 26, 12, 0, 0, 0, time.UTC)
+	fmt.Println(t) // 1992-12-26 12:00:00 +0000 UTC
+}</pre>
+                                        </a>
+                                        <p><strong class="post-heading">&raquo; Points to remember while working with
+                                            time</strong></p>
+                                        <p>In go you can format or parse a time to one which you want.
+                                            To achive this go has a standard time which is of like :
+                                        </p>
+                                        <pre class="prettyprint">Monday, 02-Jan-06 15:04:05 MST</pre>
+                                        <p>You have to use this statndard time to format or parse any time. You can also
+                                            use some of the
+                                            predefined layouts in time package with Time.Format or Time.Parse to avoid
+                                            remembering the standard time.</p>
+                                        <pre class="prettyprint">time.ANSIC // Mon Jan _2 15:04:05 2006
+time.UnixDate // Mon Jan _2 15:04:05 MST 2006
+time.RubyDate // Mon Jan 02 15:04:05 -0700 2006
+time.RFC822 // 02 Jan 06 15:04 MST
+time.RFC822Z // 02 Jan 06 15:04 -0700 // RFC822 with numeric zone
+time.RFC850 // Monday, 02-Jan-06 15:04:05 MST
+time.RFC1123 // Mon, 02 Jan 2006 15:04:05 MST
+time.RFC1123Z // Mon, 02 Jan 2006 15:04:05 -0700 // RFC1123 with numeric zone
+time.RFC3339 // 2006-01-02T15:04:05Z07:00
+time.RFC3339Nano // 2006-01-02T15:04:05.999999999Z07:00
+time.Kitchen // 3:04PM
+// Handy time stamps.
+time.Stamp // Jan _2 15:04:05
+time.StampMilli // Jan _2 15:04:05.000
+time.StampMicro // Jan _2 15:04:05.000000
+time.StampNano // Jan _2 15:04:05.000000000</pre>
+                                        <p><strong class="post-heading">&raquo; Format a time </strong></p>
+                                        <p>In go you can format a time to any format by using Time.Format method of time
+                                            package. Format method takes a single argument of string type.</p>
+                                        <pre class="prettyprint">func (t Time) Format(layout string) string</pre>
+                                        <a href="https://play.golang.org/p/_K_Z9aqBJh" class="playground-link"
+                                           target="_blank">
+                                        <pre class="prettyprint">// By using predefined layouts
+t := time.Now()
+fmt.Println(t.Format(time.RFC3339)) // 2016-09-17T14:25:28+05:30
+
+// or by using you custom layout
+form := "January 2, 2006"
+fmt.Println(t.Format(form)) // September 17, 2016</pre>
+                                        </a>
+                                        <p><strong class="post-heading">&raquo; Parsing a string to time</strong></p>
+                                        <p>Go has <b>time.Parse</b> function for parsing a string to time object.</p>
+                                        <pre class="prettyprint">func Parse(layout, value string) (Time, error)</pre>
+                                        <p>Here is the exmple to illustrate time parsing.</p>
+                                        <a href="https://play.golang.org/p/REQrvR_MEd" class="playground-link"
+                                           target="_blank">
+                                        <pre class="prettyprint">value := "December 26, 2016"
+
+// The layout must be January 2,2006.
+layout := "January 2, 2006"
+
+// Parse the string according to the layout.
+t, _ := time.Parse(layout, value)
+fmt.Println(t) // 2016-12-26 00:00:00 +0000 UTC</pre>
+                                        </a>
+                                        <p><strong class="post-heading">&raquo; Sleep function</strong></p>
+                                        <p>Sleep function paused the execution of current goroutines for a duration of
+                                            time.
+                                            Sleep function takes duration as argument. </p>
+                                        <pre class="prettyprint">func Sleep(d Duration)</pre>
+                                        <a href="https://play.golang.org/p/Wqpyjnqzwi" class="playground-link"
+                                           target="_blank">
+                                            <pre class="prettyprint">func main() {
+    for i := 0; i < 3; i++ {
+	    // Duration receives nanoseconds.
+	    d := time.Duration(1000000000)
+	    // Sleep for 1 second.
+	    time.Sleep(d)
+	    fmt.Println("Current Time is : ", time.Now())
+    }
+}</pre>
+                                        </a>
+                                        <p>Output :-</p>
+                                        <pre class="prettyprint">Current Time is :  2016-09-17 15:13:54.317639373 +0530 IST
+Current Time is :  2016-09-17 15:13:55.317943187 +0530 IST
+Current Time is :  2016-09-17 15:13:56.318247361 +0530 IST</pre>
+                                        <p><strong class="post-heading">&raquo; Subtracting one time from
+                                            another</strong></p>
+                                        <p>You can leverage the Time.Sub method to get duration between two times.</p>
+                                        <pre class="prettyprint">func (t Time) Sub(u Time) Duration</pre>
+                                        <p>Here is the example to illustrate this.</p>
+                                        <a href="https://play.golang.org/p/8itmxjId1F" class="playground-link"
+                                           target="_blank">
+                                            <pre class="prettyprint">func main() {
+	t1 := time.Now()
+
+	// Sleeps for 2 seconds.
+	time.Sleep(time.Second * 2)
+
+	t2 := time.Now()
+
+	// Get duration between t1 and t2.
+	d := t2.Sub(t1)
+	fmt.Println("Duration : ", d)
+	// Get seconds from duration.
+	s := d.Seconds()
+	fmt.Println("Seconds : ", s)
+	// Get minutes from duration.
+	m := d.Minutes()
+	fmt.Println("Minutes : ", m)
+}</pre>
+                                        </a>
+                                        <p>Output :- </p>
+                                        <pre class="prettyprint">Duration :  2.000125515s
+Seconds :  2.000125515
+Minutes :  0.03333542525</pre>
+                                        <p><strong class="post-heading">&raquo; Before, After and Equal</strong></p>
+                                        <p>Go has also three methods named Before, After and Equal for performing
+                                            comparision between
+                                            different time stamps.</p>
+                                        <a href="https://play.golang.org/p/oqk_9PnytN" class="playground-link"
+                                           target="_blank">
+                                        <pre class="prettyprint">func main() {
+	t1 := time.Date(2010, 12, 26, 12, 0, 0, 0, time.UTC)
+	t2 := time.Date(2015, 12, 26, 12, 0, 0, 0, time.UTC)
+
+	// first time is before the second.
+	fmt.Println(t1.Before(t2))
+
+	// second time is after the first.
+	fmt.Println(t2.After(t1))
+
+	// first time is after the second.
+	fmt.Println(t1.After(t2))
+
+	t3 := time.Date(2015, 12, 26, 12, 0, 0, 0, time.UTC)
+	// first and second are equal
+	fmt.Println(t1.Equal(t2))
+	// second and third are equal
+	fmt.Println(t2.Equal(t3))
+}</pre>
+                                        </a>
+                                        <p>Output :-</p>
+                                        <pre class="prettyprint">true
+true
+false
+false
+true</pre>
+                                        <div class='pbtsharethisbutt'>
+                                            Share:
+                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
+                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{.ImageUrl}}
+                                                &description=Go has an interesting approach to parse string object to time and time object to string.
+                                                Go supports time formatting and parsing via pattern based layouts. Go time package provides
+                                                &link=http://vikramjakhar.com/post/working-with-date-time-in-go
+                                                &picture=http://vikramjakhar.com/assets/images/{{.ImageUrl}}'
+                                               onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
+                                               rel='nofollow' target='_blank'
+                                               title='Share this on Facebook'>
+                                                <i class='fa fa-facebook'></i>
+                                            </a>
+                                            <a href='#' rel='nofollow' target='_blank' title='Tweet This!'>
+                                                <i class='fa fa-twitter'></i>
+                                            </a>
+                                            <a href='#' onclick='javascript:void(0);return false;' rel='nofollow'
+                                               target='_blank' title='Share this on Google+'>
+                                                <i class='fa fa-google-plus'></i>
+                                            </a>
+                                            <a class='social-iconnbt' href='#' rel='nofollow'
+                                               target='_blank' title='Share on Pinterest'>
+                                                <i class='fa fa-pinterest'></i>
+                                            </a>
+                                        </div>
+                                        <div style='clear: both;'></div>
+                                </div>
+                                <div class='post-iconspbt'>
+<span class='post-icons' style='padding-right:10px;'>
+</span>
+                                    <div style='clear: both;'></div>
+                                </div>
+                                <div class='post-location post-locationpbt'>
+                                </div>
+                                <div class='related-postbwrap' id='bpostrelated-post'></div>
+                                <div style='clear: both;'></div>
+                                <div class='post-footer'>
+                                    <div class='post-footer-line post-footer-line-'></div>
+                                    <div class='post-footer-line post-footer-line-2'>
+                                    </div>
+                                    <div class='post-footer-line post-footer-line-3'></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='clear'></div>
+                        <input type="hidden" id="currentPage" value="{{.Name}}">
+                        <div id="comments"></div>
+                        <script src='/assets/js/comment.js' type='text/babel'></script>
+                        <div class="clear"></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
+</div>
+</div>
+{{end}}
