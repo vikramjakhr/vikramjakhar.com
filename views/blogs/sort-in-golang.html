@@ -1,0 +1,177 @@
+{{define "sort-in-golang"}}
+<div id='main-wrapper'>
+    <div class='main section' id='main'>
+        <div class='widget Blog' data-version='1' id='Blog1'>
+            <div class='blog-posts hfeed'>
+
+                <div class="date-outer">
+                    <h2 class='date-header'><span>Monday, July 25, 2016</span></h2>
+
+                    <div class="date-posts">
+                        <div class='post-outer'>
+                            <div class='wrapfullpost'>
+                                <div class='post hentry'>
+                                    <h3 class='post-title entry-title' itemprop='headline'>
+                                        <a href='/post/{{.Name}}'>{{.Title}}</a>
+                                    </h3>
+                                    <div class='post-header-line-1'></div>
+                                    <div class='postmeta-primary'>
+                                                    <span class='meta_author post-author vcard'>
+                                                        <span class='fn' itemprop='author' itemscope='itemscope'>
+                                                            <a class='g-profile' href='/about' rel='author'
+                                                               title='author profile'>
+                                                                <span itemprop='name'>{{.Author}}</span></a></span></span>
+                                                    <span class='meta_date'>
+                                                        <a class='timestamp-link' href='#' rel='bookmark'
+                                                           title='permanent link'>
+                                                            <time class="timeago" datetime="{{.PublishDate}}">{{.PublishDate}}</time></a></span>
+                                                    <span class='meta_comments'>
+                                                        <a id="commentCountLink" class='comment-link' href='#comments'
+                                                           onclick=''>{{.CommentCount}} comments</a>
+                                                    </span>
+                                                    <span class='item-control blog-admin pid-3'>
+                                                        <a href='#' title='Edit Post'>
+                                                            <img alt='' class='icon-action' height='18'
+                                                                 src='/assets/images/icon18_edit_allbkg.gif'
+                                                                 width='18'/>
+                                                        </a>
+                                                    </span>
+                                    </div>
+                                    <div class='post-body entry-content' id='post-body-3'>
+                                        <p style="text-align: center;"><a
+                                                href="#"
+                                                rel="nofollow"><img
+                                                src="/assets/images/{{.ImageUrl}}"
+                                                style="max-width:100%; high: auto;"
+                                                alt="sfsdf"/></a>
+                                            <br/>
+                                        </p>
+                                        <p>
+                                            In golang sort package provides primitives for sorting slices and user-defined collections. Go has
+                                            Sort function for some of the predefined types, and also you can define your own sorting for any type
+                                            which satisfies sort.Interface.
+                                        </p>
+                                        <p>All functions related to sort in sort package operates on slices and all these are in place, which means changes the value of
+                                        slice iteself which needs to be sorted. It not create any copy of slice.</p>
+                                        <p><strong class="post-heading">&raquo; Sorting strings </strong></p>
+                                        <p>You can sort any slice of string by using sort.Strings function.</p>
+                                        <pre class="prettyprint">func Strings(a []string)</pre>
+                                        <p>Here is the example illustrating sorting of strings.</p>
+                                        <a href="https://play.golang.org/p/fMpJgTUG3j" class="playground-link"
+                                           target="_blank">
+                                            <pre class="prettyprint">func main() {
+    colors := []string{"red", "orange", "black", "cyan"}
+
+    // Sort strings of colors.
+    sort.Strings(colors)
+    fmt.Println(colors) // [black cyan orange red]
+}</pre>
+                                        </a>
+                                        <p><strong class="post-heading">&raquo; Implementing custom sorting</strong></p>
+                                        <p>In Go to implement our own sorting, we need to declare a type which satisfies sort.Interface.
+                                            A type, typically a collection, that satisfies sort.Interface can be
+                                            sorted by the sort package. sort.Interface contains 3 methods namely Len,Swap and Less,
+                                            we need to provide definition for all these 3 methods to implement our custom sorting.
+                                        </p>
+                                        <p>Declaration of sort.Interface in sort package is as :</p>
+                                        <pre class="prettyprint">type Interface interface {
+    // Len is the number of elements in the collection.
+    Len() int
+    // Less reports whether the element with
+    // index i should sort before the element with index j.
+    Less(i, j int) bool
+    // Swap swaps the elements with indexes i and j.
+    Swap(i, j int)
+}</pre>
+                                        <p><strong class="post-heading">&raquo; Custom Sorting of strings based on length</strong></p>
+                                        <p>Below is the example that do sorting of strings based on length by using custom sorting
+                                        mechanism.</p>
+                                        <a href="https://play.golang.org/p/tbq5kln8id" class="playground-link"
+                                           target="_blank">
+                                            <pre class="prettyprint">// Custom type representing slice of string
+type ByLength []string
+
+// Implementing Len() method of sort.Interface
+func (s ByLength) Len() int {
+    return len(s)
+}
+
+// Implementing Swap method of sort.Interface
+func (s ByLength) Swap(i, j int)  {
+    s[i], s[j] = s[j], s[i]
+}
+
+// Implementing Less method of sort.Interface
+func (s ByLength) Less(i, j int) bool {
+    return len(s[i]) < len(s[j])
+}
+
+func main() {
+    // Unsorted elements
+    fruits := []string{"pineapple", "banana", "guava", "apple"}
+    sort.Sort(ByLength(fruits))
+    // Prints sorted elements based on length of a string
+    fmt.Println(fruits) // [guava apple banana pineapple]
+}</pre>
+                                        </a>
+                                        <div class='pbtsharethisbutt'>
+                                            Share:
+                                            <a href='https://www.facebook.com/sharer/sharer.php?u=http://vikramjakhar.com/post/{{.Name}}
+                                                &amp;src=sdkpreparse&amp;title={{.Title}}&amp;image=http://vikramjakhar.com/assets/images/{{.ImageUrl}}
+                                                &description=Go has an interesting approach to parse string object to time and time object to string.
+                                                Go supports time formatting and parsing via pattern based layouts. Go time package provides
+                                                &link=http://vikramjakhar.com/post/working-with-date-time-in-go
+                                                &picture=http://vikramjakhar.com/assets/images/{{.ImageUrl}}'
+                                               onclick='window.open(this.href,"sharer","toolbar=0,status=0,width=626,height=436"); return false;'
+                                               rel='nofollow' target='_blank'
+                                               title='Share this on Facebook'>
+                                                <i class='fa fa-facebook'></i>
+                                            </a>
+                                            <a href='#' rel='nofollow' target='_blank' title='Tweet This!'>
+                                                <i class='fa fa-twitter'></i>
+                                            </a>
+                                            <a href='#' onclick='javascript:void(0);return false;' rel='nofollow'
+                                               target='_blank' title='Share this on Google+'>
+                                                <i class='fa fa-google-plus'></i>
+                                            </a>
+                                            <a class='social-iconnbt' href='#' rel='nofollow'
+                                               target='_blank' title='Share on Pinterest'>
+                                                <i class='fa fa-pinterest'></i>
+                                            </a>
+                                        </div>
+                                        <div style='clear: both;'></div>
+                                </div>
+                                <div class='post-iconspbt'>
+<span class='post-icons' style='padding-right:10px;'>
+</span>
+                                    <div style='clear: both;'></div>
+                                </div>
+                                <div class='post-location post-locationpbt'>
+                                </div>
+                                <div class='related-postbwrap' id='bpostrelated-post'></div>
+                                <div style='clear: both;'></div>
+                                <div class='post-footer'>
+                                    <div class='post-footer-line post-footer-line-'></div>
+                                    <div class='post-footer-line post-footer-line-2'>
+                                    </div>
+                                    <div class='post-footer-line post-footer-line-3'></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='clear'></div>
+                        <input type="hidden" id="currentPage" value="{{.Name}}">
+                        <div id="comments"></div>
+                        <script src='/assets/js/comment.js' type='text/babel'></script>
+                        <div class="clear"></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
+</div>
+</div>
+{{end}}

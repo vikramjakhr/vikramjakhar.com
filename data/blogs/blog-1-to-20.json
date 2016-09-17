@@ -76,5 +76,18 @@
     "imageUrl": "working-with-date-time-in-go.png",
     "commentsFileName": "working-with-date-time-in-go.json",
     "summary": "Go has an interesting approach to parse string object to time and time object to string. Go supports time formatting and parsing via pattern based layouts. Go's time package provides "
+  },
+  {
+    "id": 7,
+    "name": "sort-in-golang",
+    "title": "Sorting in Golang",
+    "tmplFileName": "sort-in-golang.html",
+    "author": "Vikram",
+    "publishDate": "2016-09-17T16:23:17Z",
+    "tags": "Golang",
+    "commentCount": 0,
+    "imageUrl": "sort-in-golang.png",
+    "commentsFileName": "sort-in-golang.json",
+    "summary": "Go has an interesting approach to parse string object to time and time object to string. Go supports time formatting and parsing via pattern based layouts. Go's time package provides "
   }
 ]

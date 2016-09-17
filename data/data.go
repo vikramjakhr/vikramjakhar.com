@@ -25,20 +25,6 @@ func initBlogMetadata() {
 	metadata["go-types"] = "3,blog-1-to-20.json"
 	metadata["map-in-go"] = "4,blog-1-to-20.json"
 	metadata["working-with-date-time-in-go"] = "5,blog-1-to-20.json"
+	metadata["sort-in-golang"] = "6,blog-1-to-20.json"
 	BlogMetaInfo = BlogMetadata{(int64(len(metadata))), metadata}
 }
-
-/*
-{
-"id": 1472765529445,
-"name": "concurrency-in-go",
-"title": "Concurrency in Go",
-"tmplFileName": "concurrency-in-go.html",
-"author": "Vikram",
-"publishDate": 21315465,
-"tags": "Golang",
-"commentCount": 0,
-"imageUrl": "concurrency-in-go.png",
-"commentsFileName": "concurrency-in-go.json",
-"summary": "A slice is a data structure that is very similar to an array, but without any specified length. Slices are abstraction built on top of an array type that provides a more convenient way of working with collections"
-},*/
