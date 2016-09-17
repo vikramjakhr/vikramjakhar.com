@@ -145,3 +145,17 @@ func GetFileName(page int64) (string, int64, int64) {
 	}
 	return fileName, max, t
 }
+
+type Blogs []BlogMetadata
+
+func (b Blogs) Len() int {
+	return len(b)
+}
+
+func (b Blogs) Swap(i, j int) {
+	b[i], b[j] = b[j], b[i]
+}
+
+func (b Blogs) Less(i, j int) bool {
+	return b[i].ID > b[j].ID
+}

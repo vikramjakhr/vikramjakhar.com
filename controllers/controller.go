@@ -6,6 +6,7 @@ import (
 	"strings"
 	"github.com/choudhary92/vikramjakhar.com/data"
 	"strconv"
+	"sort"
 )
 
 func init() {
@@ -31,6 +32,7 @@ func Pagination(w http.ResponseWriter, r *http.Request) {
 			NotFound(w, r)
 			return
 		}
+		sort.Sort(Blogs(blogs))
 		start := page * pagination
 		end := start + pagination
 
