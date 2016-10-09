@@ -96,11 +96,11 @@
     "title": "String Joiner in Java 8",
     "tmplFileName": "string-joiner-in-java8.html",
     "author": "Vikram",
-    "publishDate": "2016-10-9T15:23:17Z",
+    "publishDate": "2016-10-9T09:29:00Z",
     "tags": "Java8",
     "commentCount": 0,
     "imageUrl": "string-joiner-in-java8.png",
     "commentsFileName": "java8-stringjoiner.json",
-    "summary": "In golang sort package provides primitives for sorting slices and user-defined collections. Go has Sort function for some of the predefined types, and also you can define your"
+    "summary": "Java SE 8 added a new class named StringJoiner for joining strings. StringJoiner is used to construct a sequence of characters separated by a delimiter and optionally starting with a supplied prefix and ending with a supplied suffix"
   }
 ]
