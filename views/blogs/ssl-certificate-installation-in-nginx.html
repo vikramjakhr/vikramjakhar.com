@@ -1,4 +1,4 @@
-{{define "arrays-in-go"}}
+{{define "ssl-certificate-installation-in-nginx"}}
 <div id='main-wrapper'>
     <div class='main section' id='main'>
         <div class='widget Blog' data-version='1' id='Blog1'>
@@ -47,70 +47,85 @@
                                                 alt="sfsdf"/></a>
                                             <br/>
                                         </p>
-                                        <p>Go provides three types of data structures to manage data
-                                            collections: <b>arrays, slices, and maps.</b></p>
                                         <p>
-                                            An array is a fixed-length data type that contains the sequence of elements
-                                            of a single type. An array is
-                                            declared by specifying the data type and the length.
+                                            SSL, Which stands for <b>secure socket layer</b>, are web protocols that protects sensitive
+                                            information as it travels across network. SSL provides privacy, integrity and security to
+                                            website and user's personal information.
                                         </p>
-                                        <p><strong class="post-heading">&raquo; Declaring an
-                                            Array</strong></p>
-                                        <pre class="prettyprint">var x [4]int</pre>
-                                        <p>
-                                            Above line of code declares an array of 5 elements of int type
-                                        </p>
-                                        <p><strong style="color: darkred">&raquo; Declaring and
-                                            Initializing an Array</strong></p>
-                                        <pre class="prettyprint">package main
+                                        <p><strong style="color: darkred">&raquo; Configuring Nginx to use SSL</strong></p>
+                                        <p>Before configure SSL in nginx you must have nginx installed on your machine.
+                                        To configure SSL in nginx you need below two files : <br>
+                                        1) A <b>ssl certificate</b> (bundle crt or pem)<br>
+                                        2) A <b>ssl certificate key</b> </p>
+                                        <p><b style="color: #1B1B1B">Step 1 :- </b>Open Nginx configuration file which mostly located
+                                        in /etc/nginx/ or in some other directory where you have installed nginx.</p>
+                                        <p>A server block in nginx configuration file looks like as below :</p>
+                                        <pre class="prettyprint">server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
 
-import "fmt"
+    root /usr/share/nginx/html;
+    index index.html index.htm;
 
-func main() {
-    var x [5]int
-    x[0] = 10
-    x[1] = 20
-    x[2] = 30
-    x[3] = 40
-    fmt.Println(x)
+    server_name your_domain;
+
+    location / {
+            try_files $uri $uri/ =404;
+    }
 }</pre>
-                                        <p>You should see the output as :- </p>
-                                        <pre class="prettyprint">[10 20 30 40]</pre>
+                                        <p><b style="color: #1B1B1B">Step 2 :-</b> Now create a new block having below configuration
+                                        for https(443)</p>
+                                        <pre class="prettyprint">server {
+    listen 443;
 
-                                        <p><strong style="color: darkred">&raquo; Array Initialization using Array
-                                            Literal</strong></p>
-                                        <p>You can also initialize an array in go while declaring it.</p>
-                                        <pre class="prettyprint">x := [4]int{10, 20, 30, 40}</pre>
-                                        <p>OR as a multiline statement : </p>
-                                        <pre class="prettyprint">x := [4]int{
-    10,
-    20,
-    30,
-    40,
+    server_name your_domain;
+    ssl_certificate /etc/nginx/ssl/certificate.crt;
+    ssl_certificate_key /etc/nginx/ssl/certificate_key.key;
+
+    location / {
+            try_files $uri $uri/ =404;
+    }
 }</pre>
-                                        <p><strong style="color: darkred">&raquo; Array Initialization using
-                                            ...</strong></p>
-                                        <p>If you don't know array size in advance, then you can also go with
-                                            initialization as in
-                                            code below. In this type of initialization size of array will be calculated
-                                            automatically
-                                            based on the number of arguments to initialization.</p>
-                                        <pre class="prettyprint">x := [...]int{10, 20, 30, 40}</pre>
+                                        <p><b style="color:#1B1B1B">Step 3 :-</b> Now save the configuration file and restart the nginx server to reload new settings.</p>
+                                        <pre class="prettyprint">sudo service nginx restart</pre>
 
-                                        <p><strong style="color: darkred">&raquo; Initialization of Specific Elements in
-                                            an Array</strong></p>
-                                        <p>You can also initialize an array in go while declaring it.</p>
-                                        <pre class="prettyprint">package main
+                                        <p><b style="color: #1B1B1B">Step 4 :-</b> Now test your configuration by hitting the
+                                        domain name or IP. Your domain must have been now configured to use both http and https(SSL).</p>
+                                        <p><strong style="color: darkred">&raquo; Redirecting all http requests to https</strong></p>
+                                        <p>Now after configuring https, you might want to redirect all http request to https url, to
+                                        achive this, replace the server block in
+                                        <b style="color: #1B1B1B">Step 1</b> with below configuration.</p>
+                                        <pre class="prettyprint">server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
 
-import "fmt"
+    server_name your_domain;
 
-func main() {
-    x := [5]int{2: 20, 4: 40}
-    fmt.Println(x)
+    # below line redirect http request to https
+    return 301 https://$host$request_uri;
 }</pre>
-                                        <p>You should see the following output : </p>
-                                        <pre class="prettyprint">[0,0,20,0,40]</pre>
+                                        <p><strong style="color: darkred">&raquo; Example configuration for redirecting all http requests to https</strong></p>
+                                        <pre class="prettyprint">server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
 
+    server_name localhost;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+
+    server_name localhost;
+
+    ssl_certificate /etc/nginx/ssl/vikramjakhar.com_bundle.crt;
+    ssl_certificate_key /etc/nginx/ssl/vikramjakhar.key;
+
+    location / {
+            proxy_pass http://127.0.0.1:9000;
+    }
+}</pre>
                                         <div class='pbtsharethisbutt'>
                                             Share:
                                             <a class="fb-sharer"

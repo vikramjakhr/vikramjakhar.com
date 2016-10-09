@@ -102,5 +102,18 @@
     "imageUrl": "string-joiner-in-java8.png",
     "commentsFileName": "java8-stringjoiner.json",
     "summary": "Java SE 8 added a new class named StringJoiner for joining strings. StringJoiner is used to construct a sequence of characters separated by a delimiter and optionally starting with a supplied prefix and ending with a supplied suffix"
+  },
+  {
+    "id": 9,
+    "name": "ssl-certificate-installation-in-nginx",
+    "title": "SSL Certificate Installation in NGINX",
+    "tmplFileName": "ssl-certificate-installation-in-nginx.html",
+    "author": "Vikram",
+    "publishDate": "2016-10-9T10:29:00Z",
+    "tags": "Nginx",
+    "commentCount": 0,
+    "imageUrl": "ssl-certificate-installation-in-nginx.png",
+    "commentsFileName": "ssl-certificate-installation-in-nginx.json",
+    "summary": "SSL, Which stands for secure socket layer, are web protocols that protects sensitive information as it travels across network. SSL provides privacy, integrity and security to website and user's personal information"
   }
 ]
