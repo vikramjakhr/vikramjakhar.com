@@ -26,5 +26,6 @@ func initBlogMetadata() {
 	metadata["map-in-go"] = "4,blog-1-to-20.json"
 	metadata["working-with-date-time-in-go"] = "5,blog-1-to-20.json"
 	metadata["sort-in-golang"] = "6,blog-1-to-20.json"
+	metadata["string-joiner-in-java8"] = "7,blog-1-to-20.json"
 	BlogMetaInfo = BlogMetadata{(int64(len(metadata))), metadata}
 }
