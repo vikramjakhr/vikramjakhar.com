@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"net/http"
-	"github.com/choudhary92/vikramjakhar.com/models"
-	"github.com/choudhary92/vikramjakhar.com/data"
+	"bitbucket.org/vikramjakhr/vikramjakhar.com/models"
+	"bitbucket.org/vikramjakhr/vikramjakhar.com/data"
 	"strings"
 	"fmt"
 )

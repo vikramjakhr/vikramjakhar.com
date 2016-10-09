@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"html/template"
 	"strings"
-	"github.com/choudhary92/vikramjakhar.com/data"
+	"bitbucket.org/vikramjakhr/vikramjakhar.com/data"
 	"strconv"
 	"sort"
 )

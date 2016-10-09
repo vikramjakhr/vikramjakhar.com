@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"html/template"
 	"bytes"
-	"github.com/choudhary92/vikramjakhar.com/data"
+	"bitbucket.org/vikramjakhr/vikramjakhar.com/data"
 	"log"
 	"os"
 	"io/ioutil"

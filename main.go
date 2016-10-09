@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/choudhary92/vikramjakhar.com/controllers"
-	"github.com/choudhary92/vikramjakhar.com/config"
+	"bitbucket.org/vikramjakhr/vikramjakhar.com/controllers"
+	"bitbucket.org/vikramjakhr/vikramjakhar.com/config"
 )
 
 const (
