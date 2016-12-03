@@ -69,12 +69,51 @@
                                         <p><b>8) Configuration Properties : </b>Displays a list of all configuratio properties in your application.</p>
                                         <p><b>9) Mappings : </b>It shows all request mappings paths in your application.</p>
                                         <p><strong class="post-heading">&raquo; How can I use it in my spring boot application </strong></p>
-                                        <a href="#" class="playground-link"
-                                           target="_blank">
-                                            <pre class="prettyprint">code</pre>
+                                        <p>You can enable it by adding below dependency in dependencies section of your build.gradle.</p>
+                                        <a href="https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator"
+                                           class="playground-link" target="_blank">
+                                            <pre class="prettyprint">compile("org.springframework.boot:spring-boot-starter-actuator:1.4.2.RELEASE")</pre>
                                         </a>
-                                        <pre class="prettyprint">code</pre>
-                                        <pre class="prettyprint">code</pre>
+                                        <p>And also add below Spring HATEOAS dependency to enable hyper-media based discovery page.</p>
+                                        <a href="https://mvnrepository.com/artifact/org.springframework.hateoas/spring-hateoas"
+                                           class="playground-link" target="_blank">
+                                            <pre class="prettyprint">compile("org.springframework.hateoas:spring-hateoas:0.20.0.RELEASE")</pre>
+                                        </a>
+                                        <p><strong class="post-heading">&raquo; Endpoints (How to interact/access)</strong></p>
+                                        <p>Below are the endpoints provided by actuator.</p>
+                                        <pre class="prettyprint">/actuator // hypermedia based page
+/health // health status of application
+/info // application info (git info)
+/env // environment specific information
+/dump // thread dump
+/heapdump // heap dump
+/autoconfig // provides auto configuration info
+/metrics // server metrics
+/trace // trace of last 100 request by default
+/configprops // list all configuration properties
+/beans // list all spring beans
+                                        </pre>
+                                        <p><strong class="post-heading">&raquo; Customizing endpoints</strong></p>
+                                        <p>You can customize all above endpoints if you want some different endpoint for any of the above specified. You just need
+                                        to make small changes in your application config properties for this.</p>
+                                        <pre class="prettyprint">endpoints.enabled=false // to disable all endpoints
+endpoints.health.enabled=true // to enable only health endpoint</pre>
+                                        <pre class="prettyprint">endpoints.sensitive=true // to make all endpoints active
+endpoints.info.sensitive=false // to inactive info</pre>
+                                        <p>You can also change management context path. By default it mapped to / (slash).</p>
+                                        <pre class="prettyprint">// all other endpoints will now become accessibel via /actuator/&lt;endpoint&gt;
+management.context-path=/actuator</pre>
+                                        <p><strong class="post-heading">&raquo; Enabling git info</strong></p>
+                                        <p>By default git info is sensitive, but it needs git.properties in your classpath in order
+                                        to provide full information about git. Below are steps to adding git info properly.</p>
+                                        <p><b>Step 1 : </b>First of all you need to apply git info plugin. To apply git info plugin you
+                                        need to add a maven repository and dependency in dependencies section of buildscript in build.gradle</p>
+                                        <pre class="prettyprint">maven {
+    url "https://plugins.gradle.org/m2/"
+}
+// and
+classpath("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17")</pre>
+                                        <p>Below is the full example of the above.</p>
                                         <div class='pbtsharethisbutt'>
                                             Share:
                                             <a class="fb-sharer"
