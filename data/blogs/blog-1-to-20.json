@@ -115,5 +115,18 @@
     "imageUrl": "ssl-certificate-installation-in-nginx.png",
     "commentsFileName": "ssl-certificate-installation-in-nginx.json",
     "summary": "SSL, Which stands for secure socket layer, are web protocols that protects sensitive information as it travels across network. SSL provides privacy, integrity and security to website and user's personal information"
+  },
+  {
+    "id": 10,
+    "name": "spring-boot-actuator",
+    "title": "Spring Boot Actuator with git Info",
+    "tmplFileName": "spring-actuator.html",
+    "author": "Vikram",
+    "publishDate": "2016-12-3T10:29:00Z",
+    "tags": "SpringBootActuator",
+    "commentCount": 0,
+    "imageUrl": "spring-boot-actuator.png",
+    "commentsFileName": "spring-boot-actuator.json",
+    "summary": "ksjl;fksajflkjsd;lfkj;sldkfjlkdsjhflkdsjhkjsghfjaksdfhksdjhflksajd fksjdhflksdh fksdajhfklasdhjflk sadhfjs adfhkjsa dfhklasjdh f"
   }
 ]

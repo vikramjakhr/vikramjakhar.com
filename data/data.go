@@ -28,5 +28,6 @@ func initBlogMetadata() {
 	metadata["sort-in-golang"] = "6,blog-1-to-20.json"
 	metadata["string-joiner-in-java8"] = "7,blog-1-to-20.json"
 	metadata["ssl-certificate-installation-in-nginx"] = "8,blog-1-to-20.json"
+	metadata["spring-boot-actuator"] = "9,blog-1-to-20.json"
 	BlogMetaInfo = BlogMetadata{(int64(len(metadata))), metadata}
 }
