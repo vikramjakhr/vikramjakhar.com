@@ -31,25 +31,44 @@
                                                     </span>
                                                     <span class='item-control blog-admin pid-3'>
                                                         <a href='#' title='Edit Post'>
-                                                            <img alt='' class='icon-action' height='18'
+                                                            <!--<img alt='' class='icon-action' height='18'
                                                                  src='/assets/images/icon18_edit_allbkg.gif'
-                                                                 width='18'/>
+                                                                 width='18'/>-->
                                                         </a>
                                                     </span>
                                     </div>
                                     <div class='post-body entry-content' id='post-body-3'>
-                                        <p style="text-align: center;"><a
+                                        <!--<p style="text-align: center;"><a
                                                 href="#"
                                                 rel="nofollow"><img
                                                 src="/assets/images/{{.ImageUrl}}"
                                                 style="max-width:100%; high: auto;"
                                                 alt="sfsdf"/></a>
                                             <br/>
-                                        </p>
-                                        <p><strong class="post-heading">&raquo; Heading </strong></p>
+                                        </p>-->
+                                        <p><strong class="post-heading">&raquo; What is Spring Boot Actuator </strong></p>
                                         <p>
-                                            // Your content
+                                            Spring boot actuator is the one of the production ready features of spring boot which allows you to
+                                            monitor and interact with your application. It provides various information about application i.e. health,
+                                            git info, environment info, memory, server metrics and many more.
                                         </p>
+                                        <p><strong class="post-heading">&raquo; Features </strong></p>
+                                        <p>It has several features. Below are the some important features which can make difference in the way you interact with
+                                            your application.</p>
+                                        <p><b>1) Actuator : </b>It provides a hyper link page to all endpoints for actuator. This features requires HATEOAS dependency in
+                                        your classpath.</p>
+                                        <p><b>2) Health : </b>It provides you status whether UP or DOWN or OUT OF SERVICE for each services you are using in your application.</p>
+                                        <p><b>3) Info : </b>It provides basic information about your application e.g. name, version, description. It also provides
+                                            git info if you've added git information(git.properties) in your application. i.e. branch, commit id, comment</p>
+                                        <p><b>4) Metrics : </b>It Shows server metrics for your application which includes information like memory, free memory, server uptime,
+                                        processors, heap information and many more.</p>
+                                        <p><b>5) Trace : </b>Provides you trace of last 100 HTTP requests.</p>
+                                        <p><b>6) Environment : </b>Provides you all information related to current environment on which your application is running.
+                                        It shows all enviroment specific properties your application is using.</p>
+                                        <p><b>7) Beans : </b>Displays a list of all spring beans in your application.</p>
+                                        <p><b>8) Configuration Properties : </b>Displays a list of all configuratio properties in your application.</p>
+                                        <p><b>9) Mappings : </b>It shows all request mappings paths in your application.</p>
+                                        <p><strong class="post-heading">&raquo; How can I use it in my spring boot application </strong></p>
                                         <a href="#" class="playground-link"
                                            target="_blank">
                                             <pre class="prettyprint">code</pre>
