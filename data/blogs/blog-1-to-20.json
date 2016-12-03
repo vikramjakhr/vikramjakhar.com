@@ -122,11 +122,11 @@
     "title": "Spring Boot Actuator with git Info",
     "tmplFileName": "spring-boot-actuator.html",
     "author": "Vikram",
-    "publishDate": "2016-12-3T10:29:00Z",
+    "publishDate": "2016-12-3T20:29:00Z",
     "tags": "SpringBootActuator",
     "commentCount": 0,
     "imageUrl": "spring-boot-actuator.png",
     "commentsFileName": "spring-boot-actuator.json",
-    "summary": "ksjl;fksajflkjsd;lfkj;sldkfjlkdsjhflkdsjhkjsghfjaksdfhksdjhflksajd fksjdhflksdh fksdajhfklasdhjflk sadhfjs adfhkjsa dfhklasjdh f"
+    "summary": "Spring boot actuator is the one of the production ready features of spring boot which allows you to monitor and interact with your application. It provides various information about application i.e. health, git info, environment info, memory, server metrics and many more."
   }
 ]
