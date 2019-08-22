@@ -15,7 +15,7 @@ const (
 )
 
 func main() {
-	config.InitDB("mysql", "root:igdefault@/vikramjakhar?charset=utf8")
+	config.InitDB("mysql", "root:xxxxx@/vikramjakhar?charset=utf8")
 	http.Handle("/", controllers.HttpFilter(http.HandlerFunc(controllers.Root)))
 	port := port(os.Args)
 	log.Println("Server started: http://localhost:" + port)
